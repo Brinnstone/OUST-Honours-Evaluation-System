@@ -1,0 +1,156 @@
+import socket
+import json
+
+HOST = "110.146.234.52" #Need to input a server's IP address
+PORT = 25565 #Need to input a server's port address
+
+#---------------------------------------------------------
+#Functions
+
+def collectUnauthenticatedUserDetails(unitScores):
+    print("\nPlease enter your Person ID (8-digit number):")
+
+    while True:
+        personID = input("").strip()
+        if personID.isdigit() and len(personID) == 8:
+            break
+        else:
+            print("Ensure that your ID is an 8-digit number.")
+
+    print("\nEnter unit code and mark pairs (e.g., CSI3344, 82.4). Type 'done' when finished:")
+
+    while True:
+        entry = input("Enter unit code and mark: ").strip()
+        if entry.upper() == 'DONE':
+            if 16 <= len(unitScores) <= 30:
+                break
+            else:
+                print(f"You have entered {len(unitScores)} unit scores. Please enter between 16 and 30 total.")
+                continue
+
+        try:
+            unitCode, mark = entry.split(',')
+            unitCode = unitCode.strip()
+            mark = float(mark.strip())  # Clean up any spaces before converting
+            if len(unitCode) <= 7 and 0.0 <= mark <= 100.0:
+                unitScores[unitCode] = mark  # Store unit code as key and mark as value in the dictionary
+            else:
+                print("Invalid entry. Ensure the unit code is up to 7 characters and mark is between 0.0 and 100.0.")
+        except ValueError:
+            print("Invalid format. Please enter in the format: <unitCode>, <mark>")
+            print(unitScores)
+
+    return unitScores
+
+#---------------------------------------------------------
+#Main Code Body
+print("Welcome to the client application for the OUST Honors Enrolment Pre-assessment System")
+
+#Collect the user's enrollment
+print("\nAre you a former or current OUST student? (F / C / None): ")
+enrollmentType = input("").strip().upper()
+
+while enrollmentType not in ('F', 'C', 'NONE'): #Check for invalid input
+    print(f"\n'{enrollmentType}' is not a valid option. Please select a valid input (F / C / None): ")
+    enrollmentType = input("").strip().upper()
+
+if enrollmentType not in ('F', 'NONE'):
+    #If the user is a student, use this:
+    print("Please enter your Student ID (8-digit number)")
+else:
+    #If the user is not a student, use this:
+    print("Please enter your Person ID (8-digit number)")
+
+while True:
+    personID = input("").strip()
+    if personID.isdigit() and len(personID) == 8:
+        break
+    else:
+        print("Ensure that your ID is an 8-digit number.")
+
+
+#Grab details for authentication 
+print("\nPlease input your first name: ")
+firstName = input("").strip().capitalize()
+
+print("\nPlease input your last name: ")
+lastName = input("").upper()
+
+print("\nPlease input your OUST email address: ")
+while True:
+    emailAddress = input("").strip()
+    if emailAddress.endswith("@our.oust.edu.au"):
+        break
+    else:
+        print("Invalid email address. Must be an OUST email address.")
+
+
+print("\nPlease input your mobile number: ")
+while True:
+    mobileNumber = input("").strip()
+    if mobileNumber.isdigit() and len(mobileNumber) == 10:
+        break
+    else:
+        print("Mobile Number must be a 10-digit number.")
+
+#Format the data into a JSON Dictionary
+userDataToAuthenticate = {
+    'requestType': 'Auth',
+    "personID": personID,
+    "firstName": firstName,
+    "lastName": lastName,
+    "emailAddress": emailAddress,
+    "mobileNumber": mobileNumber
+}
+
+authJsonData = json.dumps(userDataToAuthenticate).encode('utf-8')
+
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.connect((HOST, PORT))
+    s.sendall(authJsonData)
+    serverResponse = s.recv(1024)
+
+#Recieve authentication back from the server
+if serverResponse.decode('utf-8') == "Authentication successful.":
+    print(f"\n{firstName} {lastName} (PersonID: {personID}) is AUTHENTICATED.")
+
+    userDataToEvaluate = {
+    'requestType': 'Eval',
+    "personID": personID,
+    "firstName": firstName,
+    "lastName": lastName,
+    "emailAddress": emailAddress,
+    "mobileNumber": mobileNumber
+    }
+
+    evalJsonData = json.dumps(userDataToEvaluate).encode('utf-8')
+
+    #Pass all non student data to the server
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.connect((HOST, PORT))
+        s.sendall(evalJsonData)
+        #Recieve assessment results from server
+        ResultResponse = s.recv(1024)
+        print(ResultResponse.decode('utf-8'))
+
+else:
+    print(f"'\n{firstName} {lastName}' (PersonID: {personID}) is NOT AUTHENTICATED.")
+    #If user is NOT a student, collect person ID and a series of unit scores in <unit_code, mark> pair. Number of scores should be between 16 - 30 including Fail (score < 50) and duplicate unit marks if the student did the same unit multiple times.
+    #Unit code can be a string up to 7-characters. Mark is a float between 0.0 and 100.0 inclusive.
+    unitScores = {
+        'requestType': 'UnAuthUnitScore' #add request ("UnAuthUnitScores")
+    }
+    unitScores = collectUnauthenticatedUserDetails(unitScores) 
+    #POSSIBLE FIX!!!!
+    #Rather than sending unit codes and marks as a key:values pair, send them both under VALUES as they can be seperated via the comma.
+    
+    unitScoresJsonData = json.dumps(unitScores).encode('utf-8')
+
+    #Pass all non student data to the server
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.connect((HOST, PORT))
+        s.sendall(unitScoresJsonData)
+        #Recieve assessment results from server
+        ResultResponse = s.recv(1024)
+        print(ResultResponse.decode('utf-8'))
+
