@@ -84,14 +84,29 @@ def honorEligibility(unitScoreList, unitFailed, personID):
 
 
 def StudentRecord(readStudentUnitDetails, userData):
-    personID = userData["personID"]
-    individualRecord = {}
-    for records in readStudentUnitDetails():
-        if records["personID"] == personID:
-            individualRecord[records["unitCode"]] = records["resultScore"]
+    if "personID" in userData:
+        personID = userData["personID"]
+        individualRecord = {}
+        for records in readStudentUnitDetails():
+            if records["personID"] == personID:
+                individualRecord[records["unitCode"]] = records["resultScore"]
 
-    print(individualRecord)
-    return individualRecord
+        print(f"Student Record: {individualRecord}")
+        return individualRecord
+    else:
+        individualRecord = {}
+        for key, value in userData.items():
+            parts = value.split(",") # Separate the unitcodes and marks
+            if len(parts) == 2:
+                # Extract the key (part before the comma) and value (part after the comma)
+                unitCode = parts[0].strip()
+                mark = parts[1].strip() # Convert mark to float
+                individualRecord[unitCode] = mark
+            else:
+                print(f"Invalid format for value: {value}")
+
+        print(f"Student Record: {individualRecord}")
+        return(individualRecord)
 
 
 def StudentFailureRecord(readStudentUnitDetails, userData):
@@ -108,7 +123,7 @@ def StudentFailureRecord(readStudentUnitDetails, userData):
                     # Initialize the count for this unit
                     individualRecord[unitCode] = 1
 
-        print(individualRecord)
+        print(f"Student unit failures: {individualRecord}")
         return individualRecord
     
 
@@ -116,21 +131,24 @@ def StudentFailureRecord(readStudentUnitDetails, userData):
 
     else: # Handles unitData input
         individualRecord = {}
-        for records in userData:
-            print(records) # DEBUG
 
-            for key,value in records.items():
-                mark = float(value)
-                if mark < 50:
-                    if key in individualRecord:
+        for key, value in userData.items():
+            parts = value.split(",") # Separate the unitcodes and marks
+            if len(parts) == 2:
+                unitCode = parts[0].strip()
+                mark = float(parts[1].strip())
+                if mark < 50.0:
+                    if unitCode in individualRecord:
                         # Increment the count of times this unit has been failed
-                        individualRecord[key] += 1
+                        individualRecord[unitCode] += 1
                     else:
                         # Initialize the count for this unit
-                        individualRecord[key] = 1
+                        individualRecord[unitCode] = 1
+            else:
+                print(f"Invalid format for value: {value}")
 
-            print(individualRecord)
-            return individualRecord 
+        print(f"Student unit failures: {individualRecord}")
+        return individualRecord
 
 
 def authenticateClient(userDataToSend):
@@ -160,7 +178,7 @@ def handleClientContinuously(conn):
         
         # Seperates auth + eval from unit data  
         tempData = json.loads(data.decode("utf-8"))
-        if "personID" in tempData:
+        if tempData["requestType"] != "UnAuthUnitScore":
             userData = tempData
             print("Received data from client:", userData)
 
@@ -186,8 +204,11 @@ def handleClientContinuously(conn):
             # Receives unitCode + unitResult + mark of an unregistered user
             if unitData.get("requestType") == "UnAuthUnitScore":
                 unitData.pop("requestType", None)
+                personID = unitData["personID"]
+                unitData.pop("personID", None)
+
+                unitScoreList = StudentRecord(readStudentUnitDetails, unitData)
                 unitFailed = StudentFailureRecord(readStudentUnitDetails, unitData)
-                personID = userData["personID"]
                 response = honorEligibility(unitScoreList, unitFailed, personID)
                 
         # Send the response back to the client

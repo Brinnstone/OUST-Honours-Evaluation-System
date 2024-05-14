@@ -1,23 +1,16 @@
 import socket
 import json
 
-HOST = "110.146.234.52" #Need to input a server's IP address
+#HOST = "110.146.234.52" #Need to input a server's IP address
+HOST = "127.0.0.1" #Connect to server if it's on same network
 PORT = 25565 #Need to input a server's port address
 
 #---------------------------------------------------------
 #Functions
 
 def collectUnauthenticatedUserDetails(unitScores):
-    print("\nPlease enter your Person ID (8-digit number):")
-
-    while True:
-        personID = input("").strip()
-        if personID.isdigit() and len(personID) == 8:
-            break
-        else:
-            print("Ensure that your ID is an 8-digit number.")
-
     print("\nEnter unit code and mark pairs (e.g., CSI3344, 82.4). Type 'done' when finished:")
+    index = 1
 
     while True:
         entry = input("Enter unit code and mark: ").strip()
@@ -33,14 +26,16 @@ def collectUnauthenticatedUserDetails(unitScores):
             unitCode = unitCode.strip()
             mark = float(mark.strip())  # Clean up any spaces before converting
             if len(unitCode) <= 7 and 0.0 <= mark <= 100.0:
-                unitScores[unitCode] = mark  # Store unit code as key and mark as value in the dictionary
+                unitScores[index] = f"{unitCode}, {mark}"  # Store index and combined string in the dictionary
+                index += 1
             else:
                 print("Invalid entry. Ensure the unit code is up to 7 characters and mark is between 0.0 and 100.0.")
         except ValueError:
             print("Invalid format. Please enter in the format: <unitCode>, <mark>")
-            print(unitScores)
 
     return unitScores
+
+
 
 #---------------------------------------------------------
 #Main Code Body
@@ -138,7 +133,8 @@ else:
     #If user is NOT a student, collect person ID and a series of unit scores in <unit_code, mark> pair. Number of scores should be between 16 - 30 including Fail (score < 50) and duplicate unit marks if the student did the same unit multiple times.
     #Unit code can be a string up to 7-characters. Mark is a float between 0.0 and 100.0 inclusive.
     unitScores = {
-        'requestType': 'UnAuthUnitScore' #add request ("UnAuthUnitScores")
+        'requestType': 'UnAuthUnitScore', #add request ("UnAuthUnitScores")
+        'personID': personID
     }
     unitScores = collectUnauthenticatedUserDetails(unitScores) 
     #POSSIBLE FIX!!!!
@@ -150,6 +146,7 @@ else:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((HOST, PORT))
         s.sendall(unitScoresJsonData)
+        print(unitScoresJsonData) #DEBUG
         #Recieve assessment results from server
         ResultResponse = s.recv(1024)
         print(ResultResponse.decode('utf-8'))
