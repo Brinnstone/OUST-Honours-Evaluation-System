@@ -1,31 +1,6 @@
 import socket
 import json
 
-
-# import StudentInfoTable
-def readStudentInfoDetails():
-    with open("StudentInfoTable.json", "r") as StudentInfoFile:
-        studentDetails = json.load(StudentInfoFile)
-     # DEBUG   print(studentDetails) 
-    return studentDetails
-# DEBUG readStudentInfoDetails()
-
-# import CourseInfoTable
-def readCourseInfoDetails():
-    with open("CourseInfoTable.json", "r") as CourseInfoFile:
-        CourseInfoDetails = json.load(CourseInfoFile)
-      # DEBUG  print(CourseInfoDetails) 
-    return CourseInfoDetails
-# DEBUG readCourseInfoDetails()
-
-# import StudentUnitTable
-def readStudentUnitDetails():
-    with open("StudentUnitInfo.json", "r") as StudentUnitFile:
-        StudentUnitDetails = json.load(StudentUnitFile)
-       # DEBUG print(StudentUnitDetails) # DEBUG
-    return StudentUnitDetails
-# DEBUG readStudentUnitDetails()
-
 # Calculate averages
 def calculateCourseAverage(marks, unitCode):
     totalMarks = 0
@@ -208,7 +183,7 @@ PORT = 25565
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
     s.listen()
-    print("Server is listening...")
+    print("Server-1 is listening...")
 
     while True:  # Main loop to accept connections
         conn, addr = s.accept()
