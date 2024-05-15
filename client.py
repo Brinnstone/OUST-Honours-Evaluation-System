@@ -1,8 +1,8 @@
 import socket
 import json
 
-#HOST = "110.146.234.52" #Need to input a server's IP address
-HOST = "127.0.0.1" #Connect to server if it's on same network
+HOST = "110.146.234.52" #Need to input a server's IP address
+#HOST = "127.0.0.1" #Connect to server if it's on same network
 PORT = 25565 #Need to input a server's port address
 
 #---------------------------------------------------------
@@ -26,6 +26,25 @@ def collectUnauthenticatedUserDetails(unitScores):
             unitCode = unitCode.strip()
             mark = float(mark.strip())  # Clean up any spaces before converting
             if len(unitCode) <= 7 and 0.0 <= mark <= 100.0:
+                # Check attempts and grades
+                unit_attempts = [value.split(',')[0] for value in unitScores.values()]
+                unit_fails = [value for value in unitScores.values() if value.split(',')[0] == unitCode and float(value.split(',')[1]) < 50.0]
+                unit_passes = [value for value in unitScores.values() if value.split(',')[0] == unitCode and 50.0 <= float(value.split(',')[1]) < 60.0]
+                unit_high_passes = [value for value in unitScores.values() if value.split(',')[0] == unitCode and float(value.split(',')[1]) >= 60.0]
+
+                if unit_attempts.count(unitCode) >= 3:
+                    print(f"You have already attempted unit {unitCode} three times. Cannot add another attempt.")
+                    continue
+                if len(unit_fails) > 2:
+                    print(f"The unit {unitCode} has reached the maximum number of Fail grades. Cannot add another Fail attempt.")
+                    continue
+                if len(unit_passes) >= 1 and mark < 60.0:
+                    print(f"The unit {unitCode} has reached the maximum number of Pass grades. Cannot add another Pass attempt.")
+                    continue
+                if len(unit_high_passes) >= 1 and mark >= 60.0:
+                    print(f"The unit {unitCode} has already been passed with a higher grade. Cannot add another Pass attempt.")
+                    continue
+                
                 unitScores[index] = f"{unitCode}, {mark}"  # Store index and combined string in the dictionary
                 index += 1
             else:
@@ -34,7 +53,6 @@ def collectUnauthenticatedUserDetails(unitScores):
             print("Invalid format. Please enter in the format: <unitCode>, <mark>")
 
     return unitScores
-
 
 
 #---------------------------------------------------------
@@ -137,8 +155,6 @@ else:
         'personID': personID
     }
     unitScores = collectUnauthenticatedUserDetails(unitScores) 
-    #POSSIBLE FIX!!!!
-    #Rather than sending unit codes and marks as a key:values pair, send them both under VALUES as they can be seperated via the comma.
     
     unitScoresJsonData = json.dumps(unitScores).encode('utf-8')
 
@@ -146,8 +162,8 @@ else:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((HOST, PORT))
         s.sendall(unitScoresJsonData)
-        print(unitScoresJsonData) #DEBUG
+
         #Recieve assessment results from server
         ResultResponse = s.recv(1024)
-        print(ResultResponse.decode('utf-8'))
+        print(f"\n{ResultResponse.decode('utf-8')}")
 
