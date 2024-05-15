@@ -54,7 +54,7 @@ def loadJSONData(cursor, jsonFile, tableName):
         questionMarks = ', '.join(['?'] * len(keys))
         query = f'INSERT OR IGNORE INTO {tableName} ({", ".join(keys)}) VALUES ({questionMarks})'
         for entry in data:
-            cursor.execture(query, tuple(entry.values()))
+            cursor.execute(query, tuple(entry.values()))
 #-------------------------------------------
 
 def initialiseDatabase():
