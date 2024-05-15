@@ -1,0 +1,62 @@
+[
+    {
+        "RecordNo": 1,
+        "courseCode": "U65",
+        "courseTitle": "Computer Science",
+        "yearStartOffer": 1989,
+        "yearEndOffer": "Nil",
+        "courseCoordinatorName": "Course_cor1 PERSON1",
+        "courseCoordinatorEmailAddress": "cc.PERSON1@my.oust.edu.au",
+        "courseCoordinatorMobileNumber": 2024010201
+    },
+    {
+        "RecordNo": 2,
+        "courseCode": "U67",
+        "courseTitle": "Information Technology",
+        "yearStartOffer": 1992,
+        "yearEndOffer": "Nil",
+        "courseCoordinatorName": "Course_cor2 PERSON2",
+        "courseCoordinatorEmailAddress": "cc.PERSON2@my.oust.edu.au",
+        "courseCoordinatorMobileNumber": 2024010202
+    },
+    {
+        "RecordNo": 3,
+        "courseCode": "Y89",
+        "courseTitle": "Cyber Security",
+        "yearStartOffer": 1998,
+        "yearEndOffer": "Nil",
+        "courseCoordinatorName": "Course_cor3 PERSON3",
+        "courseCoordinatorEmailAddress": "cc.PERSON3@my.oust.edu.au",
+        "courseCoordinatorMobileNumber": 2024010203
+    },
+    {
+        "RecordNo": 4,
+        "courseCode": "Y84",
+        "courseTitle": "Data Science",
+        "yearStartOffer": 2012,
+        "yearEndOffer": "Nil",
+        "courseCoordinatorName": "Course_cor4 PERSON14",
+        "courseCoordinatorEmailAddress": "cc.PERSON14@my.oust.edu.au",
+        "courseCoordinatorMobileNumber": 2024010204
+    },
+    {
+        "RecordNo": 5,
+        "courseCode": "K22",
+        "courseTitle": "Physics",
+        "yearStartOffer": 1983,
+        "yearEndOffer": "Nil",
+        "courseCoordinatorName": "Course_cor5 PERSON62",
+        "courseCoordinatorEmailAddress": "cc.PERSON62@my.oust.edu.au",
+        "courseCoordinatorMobileNumber": 2024010205
+    },
+    {
+        "RecordNo": 6,
+        "courseCode": "E37",
+        "courseTitle": "Tertiary Education",
+        "yearStartOffer": 1983,
+        "yearEndOffer": 2022,
+        "courseCoordinatorName": "Nil",
+        "courseCoordinatorEmailAddress": "Nil",
+        "courseCoordinatorMobileNumber": "Nil"
+    }
+]

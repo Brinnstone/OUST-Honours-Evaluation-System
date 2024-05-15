@@ -1,0 +1,1642 @@
+[
+    {
+        "RecordNo": "101",
+        "personID": "20241201",
+        "unitCode": "Unit_01",
+        "unitTitle": "Unit_title_001",
+        "resultScore": "100",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "102",
+        "personID": "20241201",
+        "unitCode": "Unit_02",
+        "unitTitle": "Unit_title_002",
+        "resultScore": "67.6",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "103",
+        "personID": "20241201",
+        "unitCode": "Unit_03",
+        "unitTitle": "Unit_title_003",
+        "resultScore": "64.6",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "104",
+        "personID": "20241201",
+        "unitCode": "Unit_04",
+        "unitTitle": "Unit_title_004",
+        "resultScore": "80.2",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "105",
+        "personID": "20241201",
+        "unitCode": "Unit_05",
+        "unitTitle": "Unit_title_005",
+        "resultScore": "90",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "106",
+        "personID": "20241201",
+        "unitCode": "Unit_06",
+        "unitTitle": "Unit_title_006",
+        "resultScore": "55",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "107",
+        "personID": "20241201",
+        "unitCode": "Unit_07",
+        "unitTitle": "Unit_title_007",
+        "resultScore": "60.8",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "108",
+        "personID": "20241201",
+        "unitCode": "Unit_08",
+        "unitTitle": "Unit_title_008",
+        "resultScore": "85.2",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "109",
+        "personID": "20241201",
+        "unitCode": "Unit_09",
+        "unitTitle": "Unit_title_009",
+        "resultScore": "68.2",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "110",
+        "personID": "20241201",
+        "unitCode": "Unit_10",
+        "unitTitle": "Unit_title_010",
+        "resultScore": "68.3",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "111",
+        "personID": "20241201",
+        "unitCode": "Unit_11",
+        "unitTitle": "Unit_title_011",
+        "resultScore": "56.7",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "112",
+        "personID": "20241201",
+        "unitCode": "Unit_12",
+        "unitTitle": "Unit_title_012",
+        "resultScore": "38.9",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "113",
+        "personID": "20241201",
+        "unitCode": "Unit_12",
+        "unitTitle": "Unit_title_012",
+        "resultScore": "77.5",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "114",
+        "personID": "20241201",
+        "unitCode": "Unit_14",
+        "unitTitle": "Unit_title_014",
+        "resultScore": "76.2",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "115",
+        "personID": "20241201",
+        "unitCode": "Unit_15",
+        "unitTitle": "Unit_title_015",
+        "resultScore": "81.3",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "116",
+        "personID": "20241201",
+        "unitCode": "Unit_16",
+        "unitTitle": "Unit_title_016",
+        "resultScore": "46.2",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "117",
+        "personID": "20241201",
+        "unitCode": "Unit_16",
+        "unitTitle": "Unit_title_016",
+        "resultScore": "81.7",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "118",
+        "personID": "20241201",
+        "unitCode": "Unit_18",
+        "unitTitle": "Unit_title_018",
+        "resultScore": "43.3",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "119",
+        "personID": "20241201",
+        "unitCode": "Unit_18",
+        "unitTitle": "Unit_title_018",
+        "resultScore": "77.3",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "120",
+        "personID": "20241201",
+        "unitCode": "Unit_20",
+        "unitTitle": "Unit_title_020",
+        "resultScore": "42.8",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "121",
+        "personID": "20241201",
+        "unitCode": "Unit_20",
+        "unitTitle": "Unit_title_020",
+        "resultScore": "45.4",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "122",
+        "personID": "20241201",
+        "unitCode": "Unit_20",
+        "unitTitle": "Unit_title_020",
+        "resultScore": "90.9",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "123",
+        "personID": "20241201",
+        "unitCode": "Unit_23",
+        "unitTitle": "Unit_title_023",
+        "resultScore": "71.1",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "124",
+        "personID": "20241201",
+        "unitCode": "Unit_24",
+        "unitTitle": "Unit_title_024",
+        "resultScore": "92.6",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "125",
+        "personID": "20241201",
+        "unitCode": "Unit_25",
+        "unitTitle": "Unit_title_025",
+        "resultScore": "74.1",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "126",
+        "personID": "20241201",
+        "unitCode": "Unit_26",
+        "unitTitle": "Unit_title_026",
+        "resultScore": "94.6",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "127",
+        "personID": "20241201",
+        "unitCode": "Unit_27",
+        "unitTitle": "Unit_title_027",
+        "resultScore": "56.9",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "128",
+        "personID": "20241201",
+        "unitCode": "Unit_28",
+        "unitTitle": "Unit_title_028",
+        "resultScore": "40.6",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "129",
+        "personID": "20241201",
+        "unitCode": "Unit_28",
+        "unitTitle": "Unit_title_028",
+        "resultScore": "82.7",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "130",
+        "personID": "20241201",
+        "unitCode": "Unit_30",
+        "unitTitle": "Unit_title_030",
+        "resultScore": "99.9",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "201",
+        "personID": "20241202",
+        "unitCode": "Unit_01",
+        "unitTitle": "Unit_title_001",
+        "resultScore": "74",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "202",
+        "personID": "20241202",
+        "unitCode": "Unit_02",
+        "unitTitle": "Unit_title_002",
+        "resultScore": "95.3",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "203",
+        "personID": "20241202",
+        "unitCode": "Unit_03",
+        "unitTitle": "Unit_title_003",
+        "resultScore": "92.3",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "204",
+        "personID": "20241202",
+        "unitCode": "Unit_04",
+        "unitTitle": "Unit_title_004",
+        "resultScore": "67.3",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "205",
+        "personID": "20241202",
+        "unitCode": "Unit_06",
+        "unitTitle": "Unit_title_006",
+        "resultScore": "90.9",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "206",
+        "personID": "20241202",
+        "unitCode": "Unit_07",
+        "unitTitle": "Unit_title_007",
+        "resultScore": "71.1",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "207",
+        "personID": "20241202",
+        "unitCode": "Unit_08",
+        "unitTitle": "Unit_title_008",
+        "resultScore": "52.6",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "208",
+        "personID": "20241202",
+        "unitCode": "Unit_09",
+        "unitTitle": "Unit_title_009",
+        "resultScore": "74.1",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "209",
+        "personID": "20241202",
+        "unitCode": "Unit_10",
+        "unitTitle": "Unit_title_010",
+        "resultScore": "94.6",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "210",
+        "personID": "20241202",
+        "unitCode": "Unit_11",
+        "unitTitle": "Unit_title_011",
+        "resultScore": "56.9",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "211",
+        "personID": "20241202",
+        "unitCode": "Unit_12",
+        "unitTitle": "Unit_title_012",
+        "resultScore": "56.6",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "212",
+        "personID": "20241202",
+        "unitCode": "Unit_13",
+        "unitTitle": "Unit_title_013",
+        "resultScore": "76.4",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "213",
+        "personID": "20241202",
+        "unitCode": "Unit_14",
+        "unitTitle": "Unit_title_014",
+        "resultScore": "58.5",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "214",
+        "personID": "20241202",
+        "unitCode": "Unit_16",
+        "unitTitle": "Unit_title_016",
+        "resultScore": "62.4",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "215",
+        "personID": "20241202",
+        "unitCode": "Unit_18",
+        "unitTitle": "Unit_title_018",
+        "resultScore": "67",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "216",
+        "personID": "20241202",
+        "unitCode": "Unit_19",
+        "unitTitle": "Unit_title_019",
+        "resultScore": "74.4",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "217",
+        "personID": "20241202",
+        "unitCode": "Unit_20",
+        "unitTitle": "Unit_title_020",
+        "resultScore": "74.9",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "218",
+        "personID": "20241202",
+        "unitCode": "Unit_21",
+        "unitTitle": "Unit_title_021",
+        "resultScore": "53",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "219",
+        "personID": "20241202",
+        "unitCode": "Unit_23",
+        "unitTitle": "Unit_title_023",
+        "resultScore": "52.8",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "220",
+        "personID": "20241202",
+        "unitCode": "Unit_24",
+        "unitTitle": "Unit_title_024",
+        "resultScore": "65.7",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "221",
+        "personID": "20241202",
+        "unitCode": "Unit_25",
+        "unitTitle": "Unit_title_025",
+        "resultScore": "84.3",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "222",
+        "personID": "20241202",
+        "unitCode": "Unit_26",
+        "unitTitle": "Unit_title_026",
+        "resultScore": "87.7",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "223",
+        "personID": "20241202",
+        "unitCode": "Unit_27",
+        "unitTitle": "Unit_title_027",
+        "resultScore": "72.9",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "224",
+        "personID": "20241202",
+        "unitCode": "Unit_30",
+        "unitTitle": "Unit_title_030",
+        "resultScore": "93",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "301",
+        "personID": "20241203",
+        "unitCode": "Unit_01",
+        "unitTitle": "Unit_title_001",
+        "resultScore": "22.2",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "302",
+        "personID": "20241203",
+        "unitCode": "Unit_01",
+        "unitTitle": "Unit_title_001",
+        "resultScore": "83.8",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "303",
+        "personID": "20241203",
+        "unitCode": "Unit_03",
+        "unitTitle": "Unit_title_003",
+        "resultScore": "75.8",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "304",
+        "personID": "20241203",
+        "unitCode": "Unit_04",
+        "unitTitle": "Unit_title_004",
+        "resultScore": "92.1",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "305",
+        "personID": "20241203",
+        "unitCode": "Unit_05",
+        "unitTitle": "Unit_title_005",
+        "resultScore": "64.6",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "306",
+        "personID": "20241203",
+        "unitCode": "Unit_06",
+        "unitTitle": "Unit_title_006",
+        "resultScore": "80.3",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "307",
+        "personID": "20241203",
+        "unitCode": "Unit_07",
+        "unitTitle": "Unit_title_007",
+        "resultScore": "56.3",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "308",
+        "personID": "20241203",
+        "unitCode": "Unit_08",
+        "unitTitle": "Unit_title_008",
+        "resultScore": "82.8",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "309",
+        "personID": "20241203",
+        "unitCode": "Unit_09",
+        "unitTitle": "Unit_title_009",
+        "resultScore": "33.6",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "310",
+        "personID": "20241203",
+        "unitCode": "Unit_09",
+        "unitTitle": "Unit_title_009",
+        "resultScore": "75.9",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "311",
+        "personID": "20241203",
+        "unitCode": "Unit_11",
+        "unitTitle": "Unit_title_011",
+        "resultScore": "80.1",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "312",
+        "personID": "20241203",
+        "unitCode": "Unit_12",
+        "unitTitle": "Unit_title_012",
+        "resultScore": "69.8",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "313",
+        "personID": "20241203",
+        "unitCode": "Unit_12",
+        "unitTitle": "Unit_title_012",
+        "resultScore": "26.5",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "314",
+        "personID": "20241203",
+        "unitCode": "Unit_12",
+        "unitTitle": "Unit_title_012",
+        "resultScore": "57.8",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "315",
+        "personID": "20241203",
+        "unitCode": "Unit_14",
+        "unitTitle": "Unit_title_014",
+        "resultScore": "87.8",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "316",
+        "personID": "20241203",
+        "unitCode": "Unit_16",
+        "unitTitle": "Unit_title_016",
+        "resultScore": "11.5",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "317",
+        "personID": "20241203",
+        "unitCode": "Unit_16",
+        "unitTitle": "Unit_title_016",
+        "resultScore": "79",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "318",
+        "personID": "20241203",
+        "unitCode": "Unit_18",
+        "unitTitle": "Unit_title_018",
+        "resultScore": "73",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "319",
+        "personID": "20241203",
+        "unitCode": "Unit_19",
+        "unitTitle": "Unit_title_019",
+        "resultScore": "75",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "320",
+        "personID": "20241203",
+        "unitCode": "Unit_20",
+        "unitTitle": "Unit_title_020",
+        "resultScore": "89",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "321",
+        "personID": "20241203",
+        "unitCode": "Unit_21",
+        "unitTitle": "Unit_title_021",
+        "resultScore": "50.6",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "322",
+        "personID": "20241203",
+        "unitCode": "Unit_22",
+        "unitTitle": "Unit_title_022",
+        "resultScore": "71.7",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "323",
+        "personID": "20241203",
+        "unitCode": "Unit_23",
+        "unitTitle": "Unit_title_023",
+        "resultScore": "77.8",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "324",
+        "personID": "20241203",
+        "unitCode": "Unit_24",
+        "unitTitle": "Unit_title_024",
+        "resultScore": "75.7",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "325",
+        "personID": "20241203",
+        "unitCode": "Unit_25",
+        "unitTitle": "Unit_title_025",
+        "resultScore": "52",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "326",
+        "personID": "20241203",
+        "unitCode": "Unit_26",
+        "unitTitle": "Unit_title_026",
+        "resultScore": "67.7",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "327",
+        "personID": "20241203",
+        "unitCode": "Unit_27",
+        "unitTitle": "Unit_title_027",
+        "resultScore": "75.9",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "328",
+        "personID": "20241203",
+        "unitCode": "Unit_30",
+        "unitTitle": "Unit_title_030",
+        "resultScore": "71.7",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "401",
+        "personID": "20241204",
+        "unitCode": "Unit_01",
+        "unitTitle": "Unit_title_001",
+        "resultScore": "71.6",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "402",
+        "personID": "20241204",
+        "unitCode": "Unit_02",
+        "unitTitle": "Unit_title_002",
+        "resultScore": "65.2",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "403",
+        "personID": "20241204",
+        "unitCode": "Unit_03",
+        "unitTitle": "Unit_title_003",
+        "resultScore": "72.8",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "404",
+        "personID": "20241204",
+        "unitCode": "Unit_04",
+        "unitTitle": "Unit_title_004",
+        "resultScore": "75.9",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "405",
+        "personID": "20241204",
+        "unitCode": "Unit_05",
+        "unitTitle": "Unit_title_005",
+        "resultScore": "65.4",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "406",
+        "personID": "20241204",
+        "unitCode": "Unit_06",
+        "unitTitle": "Unit_title_006",
+        "resultScore": "70.8",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "407",
+        "personID": "20241204",
+        "unitCode": "Unit_07",
+        "unitTitle": "Unit_title_007",
+        "resultScore": "81.7",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "408",
+        "personID": "20241204",
+        "unitCode": "Unit_08",
+        "unitTitle": "Unit_title_008",
+        "resultScore": "72.7",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "409",
+        "personID": "20241204",
+        "unitCode": "Unit_09",
+        "unitTitle": "Unit_title_009",
+        "resultScore": "58.9",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "410",
+        "personID": "20241204",
+        "unitCode": "Unit_10",
+        "unitTitle": "Unit_title_010",
+        "resultScore": "53.5",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "411",
+        "personID": "20241204",
+        "unitCode": "Unit_11",
+        "unitTitle": "Unit_title_011",
+        "resultScore": "59",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "412",
+        "personID": "20241204",
+        "unitCode": "Unit_13",
+        "unitTitle": "Unit_title_013",
+        "resultScore": "68.7",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "413",
+        "personID": "20241204",
+        "unitCode": "Unit_14",
+        "unitTitle": "Unit_title_014",
+        "resultScore": "83.1",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "414",
+        "personID": "20241204",
+        "unitCode": "Unit_15",
+        "unitTitle": "Unit_title_015",
+        "resultScore": "52",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "415",
+        "personID": "20241204",
+        "unitCode": "Unit_16",
+        "unitTitle": "Unit_title_016",
+        "resultScore": "55.5",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "416",
+        "personID": "20241204",
+        "unitCode": "Unit_18",
+        "unitTitle": "Unit_title_018",
+        "resultScore": "56.9",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "417",
+        "personID": "20241204",
+        "unitCode": "Unit_19",
+        "unitTitle": "Unit_title_019",
+        "resultScore": "67",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "418",
+        "personID": "20241204",
+        "unitCode": "Unit_21",
+        "unitTitle": "Unit_title_021",
+        "resultScore": "68",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "419",
+        "personID": "20241204",
+        "unitCode": "Unit_22",
+        "unitTitle": "Unit_title_022",
+        "resultScore": "55.3",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "420",
+        "personID": "20241204",
+        "unitCode": "Unit_23",
+        "unitTitle": "Unit_title_023",
+        "resultScore": "78.1",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "421",
+        "personID": "20241204",
+        "unitCode": "Unit_25",
+        "unitTitle": "Unit_title_025",
+        "resultScore": "46.5",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "422",
+        "personID": "20241204",
+        "unitCode": "Unit_25",
+        "unitTitle": "Unit_title_025",
+        "resultScore": "50.7",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "423",
+        "personID": "20241204",
+        "unitCode": "Unit_27",
+        "unitTitle": "Unit_title_027",
+        "resultScore": "45",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "424",
+        "personID": "20241204",
+        "unitCode": "Unit_27",
+        "unitTitle": "Unit_title_027",
+        "resultScore": "75.4",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "425",
+        "personID": "20241204",
+        "unitCode": "Unit_29",
+        "unitTitle": "Unit_title_029",
+        "resultScore": "68.3",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "426",
+        "personID": "20241204",
+        "unitCode": "Unit_30",
+        "unitTitle": "Unit_title_030",
+        "resultScore": "76.9",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "501",
+        "personID": "20241205",
+        "unitCode": "Unit_01",
+        "unitTitle": "Unit_title_001",
+        "resultScore": "70",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "502",
+        "personID": "20241205",
+        "unitCode": "Unit_02",
+        "unitTitle": "Unit_title_002",
+        "resultScore": "80.5",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "503",
+        "personID": "20241205",
+        "unitCode": "Unit_03",
+        "unitTitle": "Unit_title_003",
+        "resultScore": "60.1",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "504",
+        "personID": "20241205",
+        "unitCode": "Unit_04",
+        "unitTitle": "Unit_title_004",
+        "resultScore": "54.9",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "505",
+        "personID": "20241205",
+        "unitCode": "Unit_05",
+        "unitTitle": "Unit_title_005",
+        "resultScore": "23.6",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "506",
+        "personID": "20241205",
+        "unitCode": "Unit_05",
+        "unitTitle": "Unit_title_005",
+        "resultScore": "51.6",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "507",
+        "personID": "20241205",
+        "unitCode": "Unit_07",
+        "unitTitle": "Unit_title_007",
+        "resultScore": "42.3",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "508",
+        "personID": "20241205",
+        "unitCode": "Unit_07",
+        "unitTitle": "Unit_title_007",
+        "resultScore": "86.3",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "509",
+        "personID": "20241205",
+        "unitCode": "Unit_49",
+        "unitTitle": "Unit_title_049",
+        "resultScore": "60.9",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "510",
+        "personID": "20241205",
+        "unitCode": "Unit_50",
+        "unitTitle": "Unit_title_050",
+        "resultScore": "53.2",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "511",
+        "personID": "20241205",
+        "unitCode": "Unit_51",
+        "unitTitle": "Unit_title_051",
+        "resultScore": "81.9",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "512",
+        "personID": "20241205",
+        "unitCode": "Unit_52",
+        "unitTitle": "Unit_title_052",
+        "resultScore": "52.1",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "513",
+        "personID": "20241205",
+        "unitCode": "Unit_53",
+        "unitTitle": "Unit_title_053",
+        "resultScore": "86.9",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "514",
+        "personID": "20241205",
+        "unitCode": "Unit_54",
+        "unitTitle": "Unit_title_054",
+        "resultScore": "55.3",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "515",
+        "personID": "20241205",
+        "unitCode": "Unit_55",
+        "unitTitle": "Unit_title_055",
+        "resultScore": "55.9",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "516",
+        "personID": "20241205",
+        "unitCode": "Unit_56",
+        "unitTitle": "Unit_title_056",
+        "resultScore": "55.7",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "517",
+        "personID": "20241205",
+        "unitCode": "Unit_58",
+        "unitTitle": "Unit_title_058",
+        "resultScore": "62.9",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "518",
+        "personID": "20241205",
+        "unitCode": "Unit_59",
+        "unitTitle": "Unit_title_059",
+        "resultScore": "84",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "519",
+        "personID": "20241205",
+        "unitCode": "Unit_61",
+        "unitTitle": "Unit_title_061",
+        "resultScore": "76.1",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "520",
+        "personID": "20241205",
+        "unitCode": "Unit_62",
+        "unitTitle": "Unit_title_062",
+        "resultScore": "65",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "521",
+        "personID": "20241205",
+        "unitCode": "Unit_63",
+        "unitTitle": "Unit_title_063",
+        "resultScore": "74.9",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "522",
+        "personID": "20241205",
+        "unitCode": "Unit_64",
+        "unitTitle": "Unit_title_064",
+        "resultScore": "83.8",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "523",
+        "personID": "20241205",
+        "unitCode": "Unit_65",
+        "unitTitle": "Unit_title_065",
+        "resultScore": "74.3",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "524",
+        "personID": "20241205",
+        "unitCode": "Unit_66",
+        "unitTitle": "Unit_title_066",
+        "resultScore": "56.8",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "525",
+        "personID": "20241205",
+        "unitCode": "Unit_67",
+        "unitTitle": "Unit_title_067",
+        "resultScore": "53.7",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "526",
+        "personID": "20241205",
+        "unitCode": "Unit_68",
+        "unitTitle": "Unit_title_068",
+        "resultScore": "42.8",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "527",
+        "personID": "20241205",
+        "unitCode": "Unit_68",
+        "unitTitle": "Unit_title_068",
+        "resultScore": "76.8",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "601",
+        "personID": "20241206",
+        "unitCode": "Unit_01",
+        "unitTitle": "Unit_title_001",
+        "resultScore": "65.9",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "602",
+        "personID": "20241206",
+        "unitCode": "Unit_02",
+        "unitTitle": "Unit_title_002",
+        "resultScore": "52.6",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "603",
+        "personID": "20241206",
+        "unitCode": "Unit_03",
+        "unitTitle": "Unit_title_003",
+        "resultScore": "61.9",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "604",
+        "personID": "20241206",
+        "unitCode": "Unit_04",
+        "unitTitle": "Unit_title_004",
+        "resultScore": "53.1",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "605",
+        "personID": "20241206",
+        "unitCode": "Unit_05",
+        "unitTitle": "Unit_title_005",
+        "resultScore": "51.5",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "606",
+        "personID": "20241206",
+        "unitCode": "Unit_07",
+        "unitTitle": "Unit_title_007",
+        "resultScore": "55.4",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "607",
+        "personID": "20241206",
+        "unitCode": "Unit_08",
+        "unitTitle": "Unit_title_008",
+        "resultScore": "62.5",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "608",
+        "personID": "20241206",
+        "unitCode": "Unit_10",
+        "unitTitle": "Unit_title_010",
+        "resultScore": "64.4",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "609",
+        "personID": "20241206",
+        "unitCode": "Unit_41",
+        "unitTitle": "Unit_title_041",
+        "resultScore": "50.7",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "610",
+        "personID": "20241206",
+        "unitCode": "Unit_42",
+        "unitTitle": "Unit_title_042",
+        "resultScore": "54.4",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "611",
+        "personID": "20241206",
+        "unitCode": "Unit_43",
+        "unitTitle": "Unit_title_043",
+        "resultScore": "62.7",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "612",
+        "personID": "20241206",
+        "unitCode": "Unit_44",
+        "unitTitle": "Unit_title_044",
+        "resultScore": "56.4",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "613",
+        "personID": "20241206",
+        "unitCode": "Unit_45",
+        "unitTitle": "Unit_title_045",
+        "resultScore": "50.5",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "614",
+        "personID": "20241206",
+        "unitCode": "Unit_46",
+        "unitTitle": "Unit_title_046",
+        "resultScore": "80.5",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "615",
+        "personID": "20241206",
+        "unitCode": "Unit_48",
+        "unitTitle": "Unit_title_048",
+        "resultScore": "62.7",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "616",
+        "personID": "20241206",
+        "unitCode": "Unit_49",
+        "unitTitle": "Unit_title_049",
+        "resultScore": "57.8",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "617",
+        "personID": "20241206",
+        "unitCode": "Unit_60",
+        "unitTitle": "Unit_title_060",
+        "resultScore": "71.2",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "618",
+        "personID": "20241206",
+        "unitCode": "Unit_61",
+        "unitTitle": "Unit_title_061",
+        "resultScore": "55.7",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "619",
+        "personID": "20241206",
+        "unitCode": "Unit_62",
+        "unitTitle": "Unit_title_062",
+        "resultScore": "51.1",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "620",
+        "personID": "20241206",
+        "unitCode": "Unit_63",
+        "unitTitle": "Unit_title_063",
+        "resultScore": "41",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "621",
+        "personID": "20241206",
+        "unitCode": "Unit_63",
+        "unitTitle": "Unit_title_063",
+        "resultScore": "62.7",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "622",
+        "personID": "20241206",
+        "unitCode": "Unit_66",
+        "unitTitle": "Unit_title_066",
+        "resultScore": "56.3",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "623",
+        "personID": "20241206",
+        "unitCode": "Unit_67",
+        "unitTitle": "Unit_title_067",
+        "resultScore": "60",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "624",
+        "personID": "20241206",
+        "unitCode": "Unit_68",
+        "unitTitle": "Unit_title_068",
+        "resultScore": "54.5",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "625",
+        "personID": "20241206",
+        "unitCode": "Unit_69",
+        "unitTitle": "Unit_title_069",
+        "resultScore": "47.5",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "626",
+        "personID": "20241206",
+        "unitCode": "Unit_69",
+        "unitTitle": "Unit_title_069",
+        "resultScore": "58.2",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "701",
+        "personID": "20241207",
+        "unitCode": "Unit_01",
+        "unitTitle": "Unit_title_001",
+        "resultScore": "50.1",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "702",
+        "personID": "20241207",
+        "unitCode": "Unit_02",
+        "unitTitle": "Unit_title_002",
+        "resultScore": "56.8",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "703",
+        "personID": "20241207",
+        "unitCode": "Unit_03",
+        "unitTitle": "Unit_title_003",
+        "resultScore": "58.4",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "704",
+        "personID": "20241207",
+        "unitCode": "Unit_04",
+        "unitTitle": "Unit_title_004",
+        "resultScore": "62.6",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "705",
+        "personID": "20241207",
+        "unitCode": "Unit_05",
+        "unitTitle": "Unit_title_005",
+        "resultScore": "58.4",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "706",
+        "personID": "20241207",
+        "unitCode": "Unit_06",
+        "unitTitle": "Unit_title_006",
+        "resultScore": "83.9",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "707",
+        "personID": "20241207",
+        "unitCode": "Unit_07",
+        "unitTitle": "Unit_title_007",
+        "resultScore": "52.1",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "708",
+        "personID": "20241207",
+        "unitCode": "Unit_08",
+        "unitTitle": "Unit_title_008",
+        "resultScore": "48.3",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "709",
+        "personID": "20241207",
+        "unitCode": "Unit_08",
+        "unitTitle": "Unit_title_008",
+        "resultScore": "64.2",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "710",
+        "personID": "20241207",
+        "unitCode": "Unit_70",
+        "unitTitle": "Unit_title_070",
+        "resultScore": "68.9",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "711",
+        "personID": "20241207",
+        "unitCode": "Unit_71",
+        "unitTitle": "Unit_title_071",
+        "resultScore": "69.3",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "712",
+        "personID": "20241207",
+        "unitCode": "Unit_72",
+        "unitTitle": "Unit_title_072",
+        "resultScore": "79.6",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "713",
+        "personID": "20241207",
+        "unitCode": "Unit_73",
+        "unitTitle": "Unit_title_073",
+        "resultScore": "70.9",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "714",
+        "personID": "20241207",
+        "unitCode": "Unit_74",
+        "unitTitle": "Unit_title_074",
+        "resultScore": "71.2",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "715",
+        "personID": "20241207",
+        "unitCode": "Unit_75",
+        "unitTitle": "Unit_title_075",
+        "resultScore": "78",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "716",
+        "personID": "20241207",
+        "unitCode": "Unit_76",
+        "unitTitle": "Unit_title_076",
+        "resultScore": "48",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "717",
+        "personID": "20241207",
+        "unitCode": "Unit_76",
+        "unitTitle": "Unit_title_076",
+        "resultScore": "76.8",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "718",
+        "personID": "20241207",
+        "unitCode": "Unit_79",
+        "unitTitle": "Unit_title_079",
+        "resultScore": "60",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "719",
+        "personID": "20241207",
+        "unitCode": "Unit_80",
+        "unitTitle": "Unit_title_080",
+        "resultScore": "61",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "720",
+        "personID": "20241207",
+        "unitCode": "Unit_81",
+        "unitTitle": "Unit_title_081",
+        "resultScore": "36.1",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "721",
+        "personID": "20241207",
+        "unitCode": "Unit_81",
+        "unitTitle": "Unit_title_081",
+        "resultScore": "62",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "722",
+        "personID": "20241207",
+        "unitCode": "Unit_84",
+        "unitTitle": "Unit_title_084",
+        "resultScore": "78.5",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "723",
+        "personID": "20241207",
+        "unitCode": "Unit_85",
+        "unitTitle": "Unit_title_085",
+        "resultScore": "76.8",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "724",
+        "personID": "20241207",
+        "unitCode": "Unit_86",
+        "unitTitle": "Unit_title_086",
+        "resultScore": "53",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "725",
+        "personID": "20241207",
+        "unitCode": "Unit_88",
+        "unitTitle": "Unit_title_088",
+        "resultScore": "60.6",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "726",
+        "personID": "20241207",
+        "unitCode": "Unit_89",
+        "unitTitle": "Unit_title_089",
+        "resultScore": "75.2",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "727",
+        "personID": "20241207",
+        "unitCode": "Unit_90",
+        "unitTitle": "Unit_title_090",
+        "resultScore": "63.1",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "801",
+        "personID": "20241208",
+        "unitCode": "Unit_01",
+        "unitTitle": "Unit_title_001",
+        "resultScore": "54",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "802",
+        "personID": "20241208",
+        "unitCode": "Unit_02",
+        "unitTitle": "Unit_title_002",
+        "resultScore": "92.1",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "803",
+        "personID": "20241208",
+        "unitCode": "Unit_03",
+        "unitTitle": "Unit_title_003",
+        "resultScore": "72.3",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "804",
+        "personID": "20241208",
+        "unitCode": "Unit_04",
+        "unitTitle": "Unit_title_004",
+        "resultScore": "34.5",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "805",
+        "personID": "20241208",
+        "unitCode": "Unit_04",
+        "unitTitle": "Unit_title_004",
+        "resultScore": "53",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "806",
+        "personID": "20241208",
+        "unitCode": "Unit_06",
+        "unitTitle": "Unit_title_006",
+        "resultScore": "56.4",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "807",
+        "personID": "20241208",
+        "unitCode": "Unit_07",
+        "unitTitle": "Unit_title_007",
+        "resultScore": "98.6",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "808",
+        "personID": "20241208",
+        "unitCode": "Unit_08",
+        "unitTitle": "Unit_title_008",
+        "resultScore": "56.7",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "809",
+        "personID": "20241208",
+        "unitCode": "Unit_09",
+        "unitTitle": "Unit_title_009",
+        "resultScore": "67",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "810",
+        "personID": "20241208",
+        "unitCode": "Unit_70",
+        "unitTitle": "Unit_title_070",
+        "resultScore": "42.2",
+        "resultGrade": "F"
+    },
+    {
+        "RecordNo": "811",
+        "personID": "20241208",
+        "unitCode": "Unit_70",
+        "unitTitle": "Unit_title_070",
+        "resultScore": "51.2",
+        "resultGrade": "P"
+    },
+    {
+        "RecordNo": "812",
+        "personID": "20241208",
+        "unitCode": "Unit_72",
+        "unitTitle": "Unit_title_072",
+        "resultScore": "92.9",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "813",
+        "personID": "20241208",
+        "unitCode": "Unit_73",
+        "unitTitle": "Unit_title_073",
+        "resultScore": "77.1",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "814",
+        "personID": "20241208",
+        "unitCode": "Unit_74",
+        "unitTitle": "Unit_title_074",
+        "resultScore": "71.5",
+        "resultGrade": "D"
+    },
+    {
+        "RecordNo": "815",
+        "personID": "20241208",
+        "unitCode": "Unit_87",
+        "unitTitle": "Unit_title_087",
+        "resultScore": "97.7",
+        "resultGrade": "HD"
+    },
+    {
+        "RecordNo": "816",
+        "personID": "20241208",
+        "unitCode": "Unit_89",
+        "unitTitle": "Unit_title_089",
+        "resultScore": "61.2",
+        "resultGrade": "CR"
+    },
+    {
+        "RecordNo": "817",
+        "personID": "20241208",
+        "unitCode": "Unit_90",
+        "unitTitle": "Unit_title_090",
+        "resultScore": "99.9",
+        "resultGrade": "HD"
+    }
+]
