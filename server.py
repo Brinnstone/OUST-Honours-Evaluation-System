@@ -26,9 +26,6 @@ def readStudentUnitDetails():
     return StudentUnitDetails
 # DEBUG readStudentUnitDetails()
 
-
-
-
 # Calculate averages
 def calculateCourseAverage(marks, unitCode):
     totalMarks = 0
@@ -42,18 +39,12 @@ def calculateCourseAverage(marks, unitCode):
     courseAverage = totalMarks / unitAmount
     return round(courseAverage, 2)
 
-
-# Calculate amount of courses failed
-
-
 # Average of best 8 scores 
 def calculateBest8Average(unitScoreList):
     best8Average = sorted(unitScoreList.items(), key=lambda x: x[1], reverse=True)[:8]
 
     best8AverageDict = dict(best8Average)
     return best8AverageDict
-
-
 
 # evaluate eligibility
 # Recieve a list of unit code, score
@@ -126,9 +117,6 @@ def StudentFailureRecord(readStudentUnitDetails, userData):
         print(f"Student unit failures: {individualRecord}")
         return individualRecord
     
-
-    # POSSIBLE FIX FOR THIS - RATHER THAN SENDING UNITCODES and MARKS AS A KEY/VALUE PAIR - SEND THEM BOTH UNDER VALUES THEN SEPERATE THEM VIA THE ","  
-
     else: # Handles unitData input
         individualRecord = {}
 
