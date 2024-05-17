@@ -1,35 +1,34 @@
 import os
 import subprocess
 
-def run_two_tiered_application():
+# This program was not designed to be ran in an IDE such as Visual Code. It is recommended to simply run the application.py file in the terminal
+
+def twoTieredApplication():
     # Change directory to the two-tiered application folder
     os.chdir('two-tiered application')
 
     # Run the server.py and client.py scripts
-    subprocess.run(['python', 'server.py'])
-    subprocess.run(['python', 'client.py'])
+    subprocess.Popen(["start", "cmd", "/k", "python", "server.py"], shell=True)
+    subprocess.Popen(["start", "cmd", "/k", "python", "client.py"], shell=True)
 
-def run_three_tiered_application():
+
+
+def threeTieredApplication():
     # Change directory to the three-tiered application folder
     os.chdir('three-tiered application')
 
-    # Run the server-2.py, server-1.py, and client.py scripts in order
-    subprocess.run(['python', 'server-2.py'])
-    subprocess.run(['python', 'server-1.py'])
-    subprocess.run(['python', 'client.py'])
+    subprocess.Popen(["start", "cmd", "/k", "python", "server-1.py"], shell=True)
+    subprocess.Popen(["start", "cmd", "/k", "python", "server-2.py"], shell=True)
+    subprocess.Popen(["start", "cmd", "/k", "python", "client.py"], shell=True)
 
-def main():
-    print("Select the application to run:")
-    print("1. Two-tiered application")
-    print("2. Three-tiered application")
-    choice = input("Enter the number of your choice: ")
+print("----------------------------------------------------------\nWelcome to the OUST Application Selector\nPlease Select '1' or '2' to Run the Designated Program: \n")
+print("1. Run Two-Tiered Application")
+print("2. Run Three-Tiered Application\n")
+choice = input("Enter: ")
 
-    if choice == '1':
-        run_two_tiered_application()
-    elif choice == '2':
-        run_three_tiered_application()
-    else:
-        print("Invalid choice. Please select either 1 or 2.")
-
-if __name__ == "__main__":
-    main()
+if choice == '1':
+    twoTieredApplication()
+elif choice == '2':
+    threeTieredApplication()
+else:
+    print("Invalid choice. Please select either 1 or 2.")
