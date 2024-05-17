@@ -17,6 +17,7 @@ def threeTieredApplication():
     # Change directory to the three-tiered application folder
     os.chdir('three-tiered application')
 
+    # Run the server-1.py, server-2.py and client.py scripts
     subprocess.Popen(["start", "cmd", "/k", "python", "server-1.py"], shell=True)
     subprocess.Popen(["start", "cmd", "/k", "python", "server-2.py"], shell=True)
     subprocess.Popen(["start", "cmd", "/k", "python", "client.py"], shell=True)
