@@ -9,7 +9,7 @@ def sendToServer2(request):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((HOST, PORT))
         s.sendall(json.dumps(request).encode("utf-8"))
-        data = s.recv(1024)
+        data = s.recv(10240) #Accepts upto 10kb of data
         response = json.loads(data.decode("utf-8"))
 
     return response
@@ -63,15 +63,27 @@ def honorEligibility(unitScoreList, unitFailed, personID):
 
 
 def StudentRecord(userData):
+    
     individualRecord = {}
-    for key, value in userData.items():
-        parts = value.split(",")  # Separate the unit codes and marks
-        if len(parts) == 2:
-            unitCode = parts[0].strip()
-            mark = parts[1].strip()
-            individualRecord[unitCode] = mark
-        else:
-            print(f"Invalid format for value: {value}")
+
+    if isinstance(userData, dict):
+        for key, value in userData.items():
+            parts = value.split(",")  # Separate the unit codes and marks
+            if len(parts) == 2:
+                unitCode = parts[0].strip()
+                mark = parts[1].strip()
+                individualRecord[unitCode] = mark
+            else:
+                print(f"Invalid format for value: {value}")
+
+    elif isinstance(userData, list):
+        for record in userData:
+            if len(record) >= 5:
+                unitCode = record[2].strip()  # Unit code is the 3rd element
+                mark = str(record[4]).strip()  # Result score is the 5th element
+                individualRecord[unitCode] = mark
+            else:
+                print(f"Invalid format for record: {record}")
 
     print(f"Student Record: {individualRecord}")
     return individualRecord
@@ -80,30 +92,30 @@ def StudentRecord(userData):
 def StudentFailureRecord(userData):
     individualRecord = {}
 
-    for key, value in userData.items():
-        parts = value.split(",")  # Separate the unit codes and marks
-        if len(parts) == 2:
-            unitCode = parts[0].strip()
-            mark = float(parts[1].strip())
-            if mark < 50.0:
-                if unitCode in individualRecord:
-                    # Increment the count of times this unit has been failed
-                    individualRecord[unitCode] += 1
+    if isinstance(userData, dict):
+            for key, value in userData.items():
+                parts = value.split(",") # Separate the unitcodes and marks
+                if len(parts) == 2:
+                    unitCode = parts[0].strip()
+                    mark = float(parts[1].strip())
+                    if mark < 50.0:
+                        if unitCode in individualRecord:
+                            # Increment the count of times this unit has been failed
+                            individualRecord[unitCode] += 1
+                        else:
+                            # Initialize the count for this unit
+                            individualRecord[unitCode] = 1
                 else:
-                    # Initialize the count for this unit
-                    individualRecord[unitCode] = 1
+                    print(f"Invalid format for value: {value}")
 
-        print(f"Student unit failures: {individualRecord}")
-        return individualRecord
-    
-    else: # Handles unitData input
-        individualRecord = {}
-
-        for key, value in userData.items():
-            parts = value.split(",") # Separate the unitcodes and marks
-            if len(parts) == 2:
-                unitCode = parts[0].strip()
-                mark = float(parts[1].strip())
+            print(f"Student unit failures: {individualRecord}")
+            return individualRecord
+    elif isinstance(userData, list):
+        # Handle userData as a list of lists
+        for record in userData:
+            if len(record) >= 5:
+                unitCode = record[2].strip()  # Unit code is the 3rd element
+                mark = float(record[4])  # Result score is the 5th element
                 if mark < 50.0:
                     if unitCode in individualRecord:
                         # Increment the count of times this unit has been failed
@@ -112,40 +124,52 @@ def StudentFailureRecord(userData):
                         # Initialize the count for this unit
                         individualRecord[unitCode] = 1
             else:
-                print(f"Invalid format for value: {value}")
+                print(f"Invalid format for record: {record}")
 
-        print(f"Student unit failures: {individualRecord}")
-        return individualRecord
+    print(f"Student unit failures: {individualRecord}")
+    return individualRecord
+
+    
 
 
 def authenticateClient(userData, comparisonData):
-    # Define the keys for the user data dictionary
-    user_keys = ["personID", "firstName", "lastName", "emailAddress", "mobileNumber", "courseCode", "unitAttempted", "unitCompleted", "courseStatus"]
+    # Check if userData is a dictionary and contains the 'error' key
+    if isinstance(userData, dict):
+        if userData.get('error') == "Student not found":
+            print("Authentication failed.")
+            return "Authentication failed."
     
-    # Remove the first element (record number) and convert the list to a dictionary
-    userData = dict(zip(user_keys, userData[1:]))
-    
-    # Remove unnecessary keys from userData
-    keys_to_remove = ["courseCode", "unitAttempted", "unitCompleted", "courseStatus"]
-    for key in keys_to_remove:
-        userData.pop(key, None)
-    
-    # Remove the requestType from comparisonData
-    comparisonData.pop("requestType", None)
-    
-    print("Processed userData:", userData)
-    print("Processed comparisonData:", comparisonData)
-    
-    if not isinstance(comparisonData, dict):
-        print("Authentication failed. Invalid data format.")
-        return "Authentication failed."
+    elif isinstance(userData, list):
+        # Define the keys for the user data dictionary
+        user_keys = ["personID", "firstName", "lastName", "emailAddress", "mobileNumber", "courseCode", "unitAttempted", "unitCompleted", "courseStatus"]
+        
+        # Remove the first element (record number) and convert the list to a dictionary
+        print("Original userData:", userData)
+        userData = dict(zip(user_keys, userData[1:]))
+        
+        # Remove unnecessary keys from userData
+        keys_to_remove = ["courseCode", "unitAttempted", "unitCompleted", "courseStatus"]
+        for key in keys_to_remove:
+            userData.pop(key, None)
+        
+        # Remove the requestType from comparisonData
+        comparisonData.pop("requestType", None)
+        
+        print("Processed userData:", userData)
+        print("Processed comparisonData:", comparisonData)
+        
+        if not isinstance(comparisonData, dict):
+            print("Authentication failed. Invalid data format.")
+            return "Authentication failed."
 
-    if all(userData.get(key) == comparisonData.get(key) for key in userData.keys()):
-        print("Authentication successful.")
-        return "Authentication successful."
+        if all(userData.get(key) == comparisonData.get(key) for key in userData.keys()):
+            print("Authentication successful.")
+            return "Authentication successful."
     
     print("Authentication failed.")
     return "Authentication failed."
+    
+
 
 
 

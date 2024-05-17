@@ -54,7 +54,6 @@ def collectUnauthenticatedUserDetails(unitScores):
 
     return unitScores
 
-
 #---------------------------------------------------------
 #Main Code Body
 print("Welcome to the client application for the OUST Honors Enrolment Pre-assessment System")
@@ -167,3 +166,4 @@ else:
         ResultResponse = s.recv(1024)
         print(f"\n{ResultResponse.decode('utf-8')}")
 
+input('\nEnter to exit...')

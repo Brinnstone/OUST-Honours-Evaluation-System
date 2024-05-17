@@ -71,44 +71,48 @@ def initialiseDatabase():
     return connection, cursor
 
 
-def handleServer1Continuously(conn, dbCursor):
-    while True:  # Keep the connection open to handle multiple requests
-        data = conn.recv(1024)
-        if not data:
-            print("\nNo data received, closing connection.")
-            break
-                
-        request = json.loads(data.decode("utf-8"))
-        print(f"Recieved request from server-1: {request}")
+def handleServer1Request(conn, dbCursor):
+    try:
+        while True:  # Keep the connection open to handle multiple requests
+            data = conn.recv(1024)
+            if not data:
+                print("\nNo data received, closing connection.")
+                break
 
-        # Process the request and query the database
-        if request["requestType"] == "getStudentDetails":
-            personID = request["personID"]
-            dbCursor.execute('SELECT * FROM studentInfo WHERE personID = ?', (personID,))
-            student_details = dbCursor.fetchone()
-            response = json.dumps(student_details) if student_details else json.dumps({"error": "Student not found"})
-        
-        elif request["requestType"] == "getCourseInfo":
-            courseCode = request["courseCode"]
-            dbCursor.execute('SELECT * FROM courseInfo WHERE courseCode = ?', (courseCode,))
-            course_info = dbCursor.fetchone()
-            response = json.dumps(course_info) if course_info else json.dumps({"error": "Course not found"})
-        
-        elif request["requestType"] == "getStudentUnitInfo":
-            personID = request["personID"]
-            dbCursor.execute('SELECT * FROM studentUnitInfo WHERE personID = ?', (personID,))
-            student_unit_info = dbCursor.fetchall()
-            response = json.dumps(student_unit_info) if student_unit_info else json.dumps({"error": "Student unit info not found"})
-        
-        else:
-            response = json.dumps({"error": "Unknown request type"})
-        
-        # Send the response back to server-1
-        conn.sendall(response.encode("utf-8"))
+            request = json.loads(data.decode("utf-8"))
+            print(f"Received request from server-1: {request}")
+
+            if request["requestType"] == "getStudentDetails":
+                personID = request["personID"]
+                dbCursor.execute('SELECT * FROM studentInfo WHERE personID = ?', (personID,))
+                student_details = dbCursor.fetchone()
+                response = json.dumps(student_details) if student_details else json.dumps({"error": "Student not found"})
+
+            elif request["requestType"] == "getCourseInfo":
+                courseCode = request["courseCode"]
+                dbCursor.execute('SELECT * FROM courseInfo WHERE courseCode = ?', (courseCode,))
+                course_info = dbCursor.fetchone()
+                response = json.dumps(course_info) if course_info else json.dumps({"error": "Course not found"})
+
+            elif request["requestType"] == "getStudentUnitInfo":
+                personID = request["personID"]
+                dbCursor.execute('SELECT * FROM studentUnitInfo WHERE personID = ?', (personID,))
+                student_unit_info = dbCursor.fetchall()
+                response = json.dumps(student_unit_info) if student_unit_info else json.dumps({"error": "Student unit info not found"})
+
+            else:
+                response = json.dumps([{"error": "Unknown request type"}])
+
+            conn.sendall(response.encode("utf-8"))
+            print(response)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        conn.close()
 
 dbConnection, dbCursor = initialiseDatabase()
 
-HOST = ""
+HOST = "127.0.0.1"
 PORT = 25566
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -116,10 +120,13 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.listen()
     print("Server-2 is listening...")
 
-    while True:  # Main loop to accept connections
-        conn, addr = s.accept()
-        print(f"Connected by {addr}")
-        handleServer1Continuously(conn, dbCursor)  # Handle sever-1 in a separate function
+    while True:
+        try:
+            conn, addr = s.accept()
+            print(f"Connected by {addr}")
+            handleServer1Request(conn, dbCursor)  # Handle server-1 in a separate function
+        except Exception as e:
+            print(f"An error occurred while accepting a connection: {e}")
 
         print("Ready for new connection...")
 
