@@ -109,7 +109,7 @@ def handleServer1Continuously(conn, dbCursor):
 dbConnection, dbCursor = initialiseDatabase()
 
 HOST = ""
-PORT = 25565
+PORT = 25566
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
@@ -119,7 +119,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     while True:  # Main loop to accept connections
         conn, addr = s.accept()
         print(f"Connected by {addr}")
-        handleServer1Continuously(conn)  # Handle sever-1 in a separate function
+        handleServer1Continuously(conn, dbCursor)  # Handle sever-1 in a separate function
 
         print("Ready for new connection...")
 

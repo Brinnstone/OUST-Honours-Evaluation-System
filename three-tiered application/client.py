@@ -1,8 +1,8 @@
 import socket
 import json
 
-HOST = "110.146.234.52" #Need to input a server's IP address
-#HOST = "127.0.0.1" #Connect to server if it's on same network
+#HOST = "110.146.234.52" #Need to input a server's IP address
+HOST = "127.0.0.1" #Connect to server if it's on same network
 PORT = 25565 #Need to input a server's port address
 
 #---------------------------------------------------------

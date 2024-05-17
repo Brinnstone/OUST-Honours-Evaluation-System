@@ -1,6 +1,19 @@
 import socket
 import json
 
+#Communicate with Server-2
+def sendToServer2(request):
+    HOST = "127.0.0.1"
+    PORT = 25566
+
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.connect((HOST, PORT))
+        s.sendall(json.dumps(request).encode("utf-8"))
+        data = s.recv(1024)
+        response = json.loads(data.decode("utf-8"))
+
+    return response
+
 # Calculate averages
 def calculateCourseAverage(marks, unitCode):
     totalMarks = 0
@@ -49,39 +62,30 @@ def honorEligibility(unitScoreList, unitFailed, personID):
         return f"{personID} : {courseAverage}, Does not qualify for honors study!"
 
 
-def StudentRecord(readStudentUnitDetails, userData):
-    if "personID" in userData:
-        personID = userData["personID"]
-        individualRecord = {}
-        for records in readStudentUnitDetails():
-            if records["personID"] == personID:
-                individualRecord[records["unitCode"]] = records["resultScore"]
+def StudentRecord(userData):
+    individualRecord = {}
+    for key, value in userData.items():
+        parts = value.split(",")  # Separate the unit codes and marks
+        if len(parts) == 2:
+            unitCode = parts[0].strip()
+            mark = parts[1].strip()
+            individualRecord[unitCode] = mark
+        else:
+            print(f"Invalid format for value: {value}")
 
-        print(f"Student Record: {individualRecord}")
-        return individualRecord
-    else:
-        individualRecord = {}
-        for key, value in userData.items():
-            parts = value.split(",") # Separate the unitcodes and marks
-            if len(parts) == 2:
-                # Extract the key (part before the comma) and value (part after the comma)
-                unitCode = parts[0].strip()
-                mark = parts[1].strip() # Convert mark to float
-                individualRecord[unitCode] = mark
-            else:
-                print(f"Invalid format for value: {value}")
-
-        print(f"Student Record: {individualRecord}")
-        return(individualRecord)
+    print(f"Student Record: {individualRecord}")
+    return individualRecord
 
 
-def StudentFailureRecord(readStudentUnitDetails, userData):
-    if "personID" in userData:
-        personID = userData["personID"]
-        individualRecord = {}
-        for records in readStudentUnitDetails():
-            if records["personID"] == personID and records["resultGrade"] == "F":
-                unitCode = records["unitCode"]
+def StudentFailureRecord(userData):
+    individualRecord = {}
+
+    for key, value in userData.items():
+        parts = value.split(",")  # Separate the unit codes and marks
+        if len(parts) == 2:
+            unitCode = parts[0].strip()
+            mark = float(parts[1].strip())
+            if mark < 50.0:
                 if unitCode in individualRecord:
                     # Increment the count of times this unit has been failed
                     individualRecord[unitCode] += 1
@@ -114,21 +118,35 @@ def StudentFailureRecord(readStudentUnitDetails, userData):
         return individualRecord
 
 
-def authenticateClient(userDataToSend):
-    # Load data from JSON file
-    with open("StudentInfoTable.json", "r", encoding="utf-8") as StudentInfoFile:
-        studentDetails = json.load(StudentInfoFile)
-         
+def authenticateClient(userData, comparisonData):
+    # Define the keys for the user data dictionary
+    user_keys = ["personID", "firstName", "lastName", "emailAddress", "mobileNumber", "courseCode", "unitAttempted", "unitCompleted", "courseStatus"]
     
-    for record in studentDetails:
+    # Remove the first element (record number) and convert the list to a dictionary
+    userData = dict(zip(user_keys, userData[1:]))
+    
+    # Remove unnecessary keys from userData
+    keys_to_remove = ["courseCode", "unitAttempted", "unitCompleted", "courseStatus"]
+    for key in keys_to_remove:
+        userData.pop(key, None)
+    
+    # Remove the requestType from comparisonData
+    comparisonData.pop("requestType", None)
+    
+    print("Processed userData:", userData)
+    print("Processed comparisonData:", comparisonData)
+    
+    if not isinstance(comparisonData, dict):
+        print("Authentication failed. Invalid data format.")
+        return "Authentication failed."
 
-        # Check if all provided details match the corresponding record
-        if all(record[key] == userDataToSend[key] for key in userDataToSend.keys()):
-            print("Authentication successful.")
-            return "Authentication successful."
-        
+    if all(userData.get(key) == comparisonData.get(key) for key in userData.keys()):
+        print("Authentication successful.")
+        return "Authentication successful."
+    
     print("Authentication failed.")
     return "Authentication failed."
+
 
 
 
@@ -151,12 +169,17 @@ def handleClientContinuously(conn):
 
             elif userData.get("requestType") == "Auth":
                 userData.pop("requestType", None)
-                response = authenticateClient(userData)
+                userData["requestType"] = "getStudentDetails" #Changing the request type to be handled within Server-2
+                retrievedData = sendToServer2(userData)
+                print(retrievedData)
+                response = authenticateClient(retrievedData, userData)
 
             elif userData.get("requestType") == "Eval":
                 userData.pop("requestType", None)
-                unitScoreList = StudentRecord(readStudentUnitDetails, userData)
-                unitFailed = StudentFailureRecord(readStudentUnitDetails, userData)
+                userData["requestType"] = "getStudentUnitInfo" #Changing the request type to be handled within Server-2
+                retrievedData = sendToServer2(userData)
+                unitScoreList = StudentRecord(retrievedData)
+                unitFailed = StudentFailureRecord(retrievedData)
                 personID = userData["personID"]
                 response = honorEligibility(unitScoreList, unitFailed, personID)
             else:
@@ -170,8 +193,8 @@ def handleClientContinuously(conn):
                 personID = unitData["personID"]
                 unitData.pop("personID", None)
 
-                unitScoreList = StudentRecord(readStudentUnitDetails, unitData)
-                unitFailed = StudentFailureRecord(readStudentUnitDetails, unitData)
+                unitScoreList = StudentRecord(unitData)
+                unitFailed = StudentFailureRecord(unitData)
                 response = honorEligibility(unitScoreList, unitFailed, personID)
                 
         # Send the response back to the client
