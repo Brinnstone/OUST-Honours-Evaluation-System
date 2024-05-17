@@ -21,14 +21,18 @@ def threeTieredApplication():
     subprocess.Popen(["start", "cmd", "/k", "python", "server-2.py"], shell=True)
     subprocess.Popen(["start", "cmd", "/k", "python", "client.py"], shell=True)
 
-print("----------------------------------------------------------\nWelcome to the OUST Application Selector\nPlease Select '1' or '2' to Run the Designated Program: \n")
-print("1. Run Two-Tiered Application")
-print("2. Run Three-Tiered Application\n")
-choice = input("Enter: ")
+while True:
+    print("----------------------------------------------------------\nWelcome to the OUST Application Selector\nPlease Select '1' or '2' to Run the Designated Program: \n")
+    print("1. Run Two-Tiered Application")
+    print("2. Run Three-Tiered Application\n")
+    choice = input("Enter: ")
 
-if choice == '1':
-    twoTieredApplication()
-elif choice == '2':
-    threeTieredApplication()
-else:
-    print("Invalid choice. Please select either 1 or 2.")
+    if choice == '1':
+        twoTieredApplication()
+        break
+    elif choice == '2':
+        threeTieredApplication()
+        break
+    else:
+        print("\nInvalid. Please Input Either '1' or '2'.")
+    
