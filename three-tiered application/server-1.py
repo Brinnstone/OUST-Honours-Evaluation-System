@@ -4,7 +4,7 @@ import json
 #Communicate with Server-2
 def sendToServer2(request):
     HOST = "127.0.0.1"
-    PORT = 25565
+    PORT = 25566
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((HOST, PORT))
@@ -219,6 +219,7 @@ def handleClientContinuously(conn):
         # Send the response back to the client
         conn.sendall(response.encode("utf-8"))
 
+import threading
 import time
 
 # Constants
@@ -235,7 +236,9 @@ def broadcast_ip():
             s.sendto(message.encode('utf-8'), (BROADCAST_IP, BROADCAST_PORT))
             time.sleep(2)  # Broadcast every 2 seconds
 
-broadcast_ip()
+# Start broadcasting in a separate thread
+threading.Thread(target=broadcast_ip, daemon=True).start()
+
 
 
 HOST = ""
