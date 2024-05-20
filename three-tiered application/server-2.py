@@ -3,8 +3,8 @@ import json
 import sqlite3
 
 #-------------------------------------------
-#Initialising the Database
-
+# Initialising the Database
+# This function creates the tables / structure that are used in the database
 def createTables(cursor):
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS studentInfo (
@@ -47,6 +47,7 @@ def createTables(cursor):
     )
     ''')
 
+# This function loads the data from the json files into the database
 def loadJSONData(cursor, jsonFile, tableName):
     with open(jsonFile, 'r', encoding='utf-8') as file:
         data = json.load(file)
@@ -57,6 +58,7 @@ def loadJSONData(cursor, jsonFile, tableName):
             cursor.execute(query, tuple(entry.values()))
 #-------------------------------------------
 
+# This function in initialise the database by creating the tables and inputting the data from the JSON files into the database.
 def initialiseDatabase():
     connection = sqlite3.connect("OSCLR.db")
     cursor = connection.cursor()
@@ -70,7 +72,7 @@ def initialiseDatabase():
     connection.commit()
     return connection, cursor
 
-
+# This function handles the connection between the server-1 and itself (server-2)
 def handleServer1Request(conn, dbCursor):
     try:
         while True:  # Keep the connection open to handle multiple requests

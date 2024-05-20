@@ -1,16 +1,16 @@
 import socket
 import json
 
-HOST = "" #Connect to server if it's on same network
-PORT = 25565 #Need to input a server's port address
+HOST = "" # LEAVE BLANK if the server and client are on the same network. If client and server are on 2 seperate networks then public Ipv4 address of server would go here
+PORT = 25565 #  Server port address to establish connection
 BROADCAST_PORT = 37020  # Port to broadcast for server discovery
-
 
 #---------------------------------------------------------
 #Functions
+#---------------------------------------------------------
 
-# Function to discover server IP
-def discover_server():
+# This function is used to discover the server's IP address over a port on a local network
+def discoverServer():
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP) as s:
         s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         s.bind(("", BROADCAST_PORT))
@@ -22,10 +22,9 @@ def discover_server():
                     return message["host"], message["port"]
             except json.JSONDecodeError:
                 continue
+HOST, PORT = discoverServer()
 
-# Discover server
-HOST, PORT = discover_server()
-
+#  This function collects data from unauthorised users so they can see if they are elegible for the honours program
 def collectUnauthenticatedUserDetails(unitScores):
     print("\nEnter unit code and mark pairs (e.g., CSI3344, 82.4). Type 'done' when finished:")
     index = 1
@@ -73,11 +72,12 @@ def collectUnauthenticatedUserDetails(unitScores):
     return unitScores
 
 #---------------------------------------------------------
-#Main Code Body
+#Main Code Body - placed into a function so that the program can be looped easily at the end
+#---------------------------------------------------------
 def main():
     print("Welcome to the client application for the OUST Honors Enrolment Pre-assessment System")
 
-    #Collect the user's enrollment
+    # Asks the user if they are a current or former student or if they are not even a student - data is not actually used.
     print("\nAre you a former or current OUST student? (F / C / None): ")
     enrollmentType = input("").strip().upper()
 
@@ -87,10 +87,10 @@ def main():
 
     if enrollmentType not in ('F', 'NONE'):
         #If the user is a student, use this:
-        print("Please enter your Student ID (8-digit number)")
+        print("Please enter your Student ID (8-digit number - 00000000):")
     else:
         #If the user is not a student, use this:
-        print("Please enter your Person ID (8-digit number)")
+        print("Please enter your Person ID (8-digit number - 00000000):")
 
     while True:
         personID = input("").strip()
@@ -100,13 +100,15 @@ def main():
             print("Ensure that your ID is an 8-digit number.")
 
 
-    #Grab details for authentication 
+    # Asks the user for their first name
     print("\nPlease input your first name: ")
     firstName = input("").strip().capitalize()
 
+    # Asks the user for their last name
     print("\nPlease input your last name: ")
     lastName = input("").upper()
 
+    # Asks the user for their OUST email address - must end with @our.oust.edu.au
     print("\nPlease input your OUST email address: ")
     while True:
         emailAddress = input("").strip()
@@ -115,8 +117,8 @@ def main():
         else:
             print("Invalid email address. Must be an OUST email address.")
 
-
-    print("\nPlease input your mobile number: ")
+    # Asks the user for their mobile phone number 
+    print("\nPlease input your mobile number (E.g 0000000000): ")
     while True:
         mobileNumber = input("").strip()
         if mobileNumber.isdigit() and len(mobileNumber) == 10:
@@ -124,9 +126,9 @@ def main():
         else:
             print("\nMobile Number must be a 10-digit number.")
 
-    #Format the data into a JSON Dictionary
+    # Format the data into a JSON Dictionary
     userDataToAuthenticate = {
-        'requestType': 'Auth',
+        "requestType": "Auth",
         "personID": personID,
         "firstName": firstName,
         "lastName": lastName,
@@ -134,6 +136,7 @@ def main():
         "mobileNumber": mobileNumber
     }
 
+    # Packs the inputs into JSON format to be sent off to the server
     authJsonData = json.dumps(userDataToAuthenticate).encode('utf-8')
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -141,12 +144,12 @@ def main():
         s.sendall(authJsonData)
         serverResponse = s.recv(1024)
 
-    #Recieve authentication back from the server
+    # Recieve authentication back from the server
     if serverResponse.decode('utf-8') == "Authentication successful.":
         print(f"\n{firstName} {lastName} (PersonID: {personID}) is AUTHENTICATED.")
 
         userDataToEvaluate = {
-        'requestType': 'Eval',
+        "requestType": "Eval",
         "personID": personID,
         "firstName": firstName,
         "lastName": lastName,
@@ -156,32 +159,33 @@ def main():
 
         evalJsonData = json.dumps(userDataToEvaluate).encode('utf-8')
 
-        #Pass all non student data to the server
+        # Pass all non student data to the server
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.connect((HOST, PORT))
             s.sendall(evalJsonData)
-            #Recieve assessment results from server
+            
+            # Recieve assessment results from server
             ResultResponse = s.recv(1024)
             print(ResultResponse.decode('utf-8'))
 
     else:
         print(f"\n{firstName} {lastName} (PersonID: {personID}) is NOT AUTHENTICATED.")
-        #If user is NOT a student, collect person ID and a series of unit scores in <unit_code, mark> pair. Number of scores should be between 16 - 30 including Fail (score < 50) and duplicate unit marks if the student did the same unit multiple times.
-        #Unit code can be a string up to 7-characters. Mark is a float between 0.0 and 100.0 inclusive.
+        # If user is NOT a student, collect person ID and a series of unit scores in <unit_code, mark> pair. Number of scores should be between 16 - 30 including Fail (score < 50) and duplicate unit marks if the student did the same unit multiple times.
+        # Unit code can be a string up to 7-characters. Mark is a float between 0.0 and 100.0 inclusive.
         unitScores = {
-            'requestType': 'UnAuthUnitScore', #add request ("UnAuthUnitScores")
+            'requestType': 'UnAuthUnitScore',
             'personID': personID
         }
         unitScores = collectUnauthenticatedUserDetails(unitScores) 
         
         unitScoresJsonData = json.dumps(unitScores).encode('utf-8')
 
-        #Pass all non student data to the server
+        # Pass all non student data to the server
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.connect((HOST, PORT))
             s.sendall(unitScoresJsonData)
 
-            #Recieve assessment results from server
+            # Recieve assessment results from server
             ResultResponse = s.recv(1024)
             print(f"\n{ResultResponse.decode('utf-8')}")
 main()
