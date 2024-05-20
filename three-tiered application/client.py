@@ -164,7 +164,7 @@ if serverResponse.decode('utf-8') == "Authentication successful.":
         print(ResultResponse.decode('utf-8'))
 
 else:
-    print(f"'\n{firstName} {lastName}' (PersonID: {personID}) is NOT AUTHENTICATED.")
+    print(f"\n{firstName} {lastName} (PersonID: {personID}) is NOT AUTHENTICATED.")
     #If user is NOT a student, collect person ID and a series of unit scores in <unit_code, mark> pair. Number of scores should be between 16 - 30 including Fail (score < 50) and duplicate unit marks if the student did the same unit multiple times.
     #Unit code can be a string up to 7-characters. Mark is a float between 0.0 and 100.0 inclusive.
     unitScores = {
