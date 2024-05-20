@@ -240,7 +240,6 @@ def broadcast_ip():
 threading.Thread(target=broadcast_ip, daemon=True).start()
 
 
-
 HOST = ""
 PORT = 25565
 

@@ -1,12 +1,31 @@
 import socket
 import json
 
-HOST = "110.146.234.52" #Need to input a server's IP address
-#HOST = "127.0.0.1" #Connect to server if it's on same network
+HOST = "" #Connect to server if it's on same network
 PORT = 25565 #Need to input a server's port address
+BROADCAST_PORT = 37020  # Port to broadcast for server discovery
 
 #---------------------------------------------------------
 #Functions
+
+# Function to discover server IP
+def discover_server():
+    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP) as s:
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        s.bind(("", BROADCAST_PORT))
+        while True:
+            data, addr = s.recvfrom(1024)
+            try:
+                message = json.loads(data.decode('utf-8'))
+                if "host" in message and "port" in message:
+                    return message["host"], message["port"]
+            except json.JSONDecodeError:
+                continue
+
+# Discover server
+HOST, PORT = discover_server()
+
+
 
 def collectUnauthenticatedUserDetails(unitScores):
     print("\nEnter unit code and mark pairs (e.g., CSI3344, 82.4). Type 'done' when finished:")
