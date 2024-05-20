@@ -34,10 +34,10 @@ def collectUnauthenticatedUserDetails(unitScores):
     while True:
         entry = input("Enter unit code and mark: ").strip()
         if entry.upper() == 'DONE':
-            if 16 <= len(unitScores) <= 30:
+            if 16 <= len(unitScores)-2 <= 30:
                 break
             else:
-                print(f"You have entered {len(unitScores)} unit scores. Please enter between 16 and 30 total.")
+                print(f"You have entered {len(unitScores)-2} unit scores. Please enter between 16 and 30 total.")
                 continue
 
         try:
@@ -123,7 +123,7 @@ while True:
     if mobileNumber.isdigit() and len(mobileNumber) == 10:
         break
     else:
-        print("Mobile Number must be a 10-digit number.")
+        print("\nMobile Number must be a 10-digit number.")
 
 #Format the data into a JSON Dictionary
 userDataToAuthenticate = {
@@ -166,7 +166,7 @@ if serverResponse.decode('utf-8') == "Authentication successful.":
         print(ResultResponse.decode('utf-8'))
 
 else:
-    print(f"'\n{firstName} {lastName}' (PersonID: {personID}) is NOT AUTHENTICATED.")
+    print(f"\n{firstName} {lastName} (PersonID: {personID}) is NOT AUTHENTICATED.")
     #If user is NOT a student, collect person ID and a series of unit scores in <unit_code, mark> pair. Number of scores should be between 16 - 30 including Fail (score < 50) and duplicate unit marks if the student did the same unit multiple times.
     #Unit code can be a string up to 7-characters. Mark is a float between 0.0 and 100.0 inclusive.
     unitScores = {
@@ -186,3 +186,4 @@ else:
         ResultResponse = s.recv(1024)
         print(f"\n{ResultResponse.decode('utf-8')}")
 
+input('\nEnter to exit...')
