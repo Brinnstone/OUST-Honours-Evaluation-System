@@ -3,7 +3,7 @@ import json
 
 HOST = "" #Connect to server if it's on same network
 PORT = 25565 #Need to input a server's port address
-BROADCAST_PORT = 25565  # Port to broadcast for server discovery
+BROADCAST_PORT = 37020  # Port to broadcast for server discovery
 
 
 #---------------------------------------------------------

@@ -4,7 +4,7 @@ import json
 #Communicate with Server-2
 def sendToServer2(request):
     HOST = "127.0.0.1"
-    PORT = 25565
+    PORT = 25566
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((HOST, PORT))
@@ -224,7 +224,7 @@ import time
 
 # Constants
 BROADCAST_IP = '255.255.255.255'
-BROADCAST_PORT = 25565
+BROADCAST_PORT = 37020
 SERVER_PORT = 25565
 
 # Function to broadcast the server's IP address
