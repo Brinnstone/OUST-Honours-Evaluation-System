@@ -129,8 +129,6 @@ def StudentFailureRecord(userData):
     print(f"Student unit failures: {individualRecord}")
     return individualRecord
 
-    
-
 
 def authenticateClient(userData, comparisonData):
     # Check if userData is a dictionary and contains the 'error' key
@@ -168,9 +166,6 @@ def authenticateClient(userData, comparisonData):
     
     print("Authentication failed.")
     return "Authentication failed."
-    
-
-
 
 
 
@@ -224,7 +219,6 @@ def handleClientContinuously(conn):
         # Send the response back to the client
         conn.sendall(response.encode("utf-8"))
 
-import threading
 import time
 
 # Constants
@@ -241,8 +235,7 @@ def broadcast_ip():
             s.sendto(message.encode('utf-8'), (BROADCAST_IP, BROADCAST_PORT))
             time.sleep(2)  # Broadcast every 2 seconds
 
-# Start broadcasting in a separate thread
-threading.Thread(target=broadcast_ip, daemon=True).start()
+broadcast_ip()
 
 
 HOST = ""
