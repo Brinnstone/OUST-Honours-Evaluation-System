@@ -74,114 +74,116 @@ def collectUnauthenticatedUserDetails(unitScores):
 
 #---------------------------------------------------------
 #Main Code Body
-print("Welcome to the client application for the OUST Honors Enrolment Pre-assessment System")
+def main():
+    print("Welcome to the client application for the OUST Honors Enrolment Pre-assessment System")
 
-#Collect the user's enrollment
-print("\nAre you a former or current OUST student? (F / C / None): ")
-enrollmentType = input("").strip().upper()
-
-while enrollmentType not in ('F', 'C', 'NONE'): #Check for invalid input
-    print(f"\n'{enrollmentType}' is not a valid option. Please select a valid input (F / C / None): ")
+    #Collect the user's enrollment
+    print("\nAre you a former or current OUST student? (F / C / None): ")
     enrollmentType = input("").strip().upper()
 
-if enrollmentType not in ('F', 'NONE'):
-    #If the user is a student, use this:
-    print("Please enter your Student ID (8-digit number)")
-else:
-    #If the user is not a student, use this:
-    print("Please enter your Person ID (8-digit number)")
+    while enrollmentType not in ('F', 'C', 'NONE'): #Check for invalid input
+        print(f"\n'{enrollmentType}' is not a valid option. Please select a valid input (F / C / None): ")
+        enrollmentType = input("").strip().upper()
 
-while True:
-    personID = input("").strip()
-    if personID.isdigit() and len(personID) == 8:
-        break
+    if enrollmentType not in ('F', 'NONE'):
+        #If the user is a student, use this:
+        print("Please enter your Student ID (8-digit number)")
     else:
-        print("Ensure that your ID is an 8-digit number.")
+        #If the user is not a student, use this:
+        print("Please enter your Person ID (8-digit number)")
+
+    while True:
+        personID = input("").strip()
+        if personID.isdigit() and len(personID) == 8:
+            break
+        else:
+            print("Ensure that your ID is an 8-digit number.")
 
 
-#Grab details for authentication 
-print("\nPlease input your first name: ")
-firstName = input("").strip().capitalize()
+    #Grab details for authentication 
+    print("\nPlease input your first name: ")
+    firstName = input("").strip().capitalize()
 
-print("\nPlease input your last name: ")
-lastName = input("").upper()
+    print("\nPlease input your last name: ")
+    lastName = input("").upper()
 
-print("\nPlease input your OUST email address: ")
-while True:
-    emailAddress = input("").strip()
-    if emailAddress.endswith("@our.oust.edu.au"):
-        break
-    else:
-        print("Invalid email address. Must be an OUST email address.")
+    print("\nPlease input your OUST email address: ")
+    while True:
+        emailAddress = input("").strip()
+        if emailAddress.endswith("@our.oust.edu.au"):
+            break
+        else:
+            print("Invalid email address. Must be an OUST email address.")
 
 
-print("\nPlease input your mobile number: ")
-while True:
-    mobileNumber = input("").strip()
-    if mobileNumber.isdigit() and len(mobileNumber) == 10:
-        break
-    else:
-        print("\nMobile Number must be a 10-digit number.")
+    print("\nPlease input your mobile number: ")
+    while True:
+        mobileNumber = input("").strip()
+        if mobileNumber.isdigit() and len(mobileNumber) == 10:
+            break
+        else:
+            print("\nMobile Number must be a 10-digit number.")
 
-#Format the data into a JSON Dictionary
-userDataToAuthenticate = {
-    'requestType': 'Auth',
-    "personID": personID,
-    "firstName": firstName,
-    "lastName": lastName,
-    "emailAddress": emailAddress,
-    "mobileNumber": mobileNumber
-}
-
-authJsonData = json.dumps(userDataToAuthenticate).encode('utf-8')
-
-with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.connect((HOST, PORT))
-    s.sendall(authJsonData)
-    serverResponse = s.recv(1024)
-
-#Recieve authentication back from the server
-if serverResponse.decode('utf-8') == "Authentication successful.":
-    print(f"\n{firstName} {lastName} (PersonID: {personID}) is AUTHENTICATED.")
-
-    userDataToEvaluate = {
-    'requestType': 'Eval',
-    "personID": personID,
-    "firstName": firstName,
-    "lastName": lastName,
-    "emailAddress": emailAddress,
-    "mobileNumber": mobileNumber
+    #Format the data into a JSON Dictionary
+    userDataToAuthenticate = {
+        'requestType': 'Auth',
+        "personID": personID,
+        "firstName": firstName,
+        "lastName": lastName,
+        "emailAddress": emailAddress,
+        "mobileNumber": mobileNumber
     }
 
-    evalJsonData = json.dumps(userDataToEvaluate).encode('utf-8')
+    authJsonData = json.dumps(userDataToAuthenticate).encode('utf-8')
 
-    #Pass all non student data to the server
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((HOST, PORT))
-        s.sendall(evalJsonData)
-        #Recieve assessment results from server
-        ResultResponse = s.recv(1024)
-        print(ResultResponse.decode('utf-8'))
+        s.sendall(authJsonData)
+        serverResponse = s.recv(1024)
 
-else:
-    print(f"\n{firstName} {lastName} (PersonID: {personID}) is NOT AUTHENTICATED.")
-    #If user is NOT a student, collect person ID and a series of unit scores in <unit_code, mark> pair. Number of scores should be between 16 - 30 including Fail (score < 50) and duplicate unit marks if the student did the same unit multiple times.
-    #Unit code can be a string up to 7-characters. Mark is a float between 0.0 and 100.0 inclusive.
-    unitScores = {
-        'requestType': 'UnAuthUnitScore', #add request ("UnAuthUnitScores")
-        'personID': personID
-    }
-    unitScores = collectUnauthenticatedUserDetails(unitScores) 
-    
-    unitScoresJsonData = json.dumps(unitScores).encode('utf-8')
+    #Recieve authentication back from the server
+    if serverResponse.decode('utf-8') == "Authentication successful.":
+        print(f"\n{firstName} {lastName} (PersonID: {personID}) is AUTHENTICATED.")
 
-    #Pass all non student data to the server
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.connect((HOST, PORT))
-        s.sendall(unitScoresJsonData)
+        userDataToEvaluate = {
+        'requestType': 'Eval',
+        "personID": personID,
+        "firstName": firstName,
+        "lastName": lastName,
+        "emailAddress": emailAddress,
+        "mobileNumber": mobileNumber
+        }
 
-        #Recieve assessment results from server
-        ResultResponse = s.recv(1024)
-        print(f"\n{ResultResponse.decode('utf-8')}")
+        evalJsonData = json.dumps(userDataToEvaluate).encode('utf-8')
 
-input('\nEnter to exit...')
+        #Pass all non student data to the server
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.connect((HOST, PORT))
+            s.sendall(evalJsonData)
+            #Recieve assessment results from server
+            ResultResponse = s.recv(1024)
+            print(ResultResponse.decode('utf-8'))
+
+    else:
+        print(f"\n{firstName} {lastName} (PersonID: {personID}) is NOT AUTHENTICATED.")
+        #If user is NOT a student, collect person ID and a series of unit scores in <unit_code, mark> pair. Number of scores should be between 16 - 30 including Fail (score < 50) and duplicate unit marks if the student did the same unit multiple times.
+        #Unit code can be a string up to 7-characters. Mark is a float between 0.0 and 100.0 inclusive.
+        unitScores = {
+            'requestType': 'UnAuthUnitScore', #add request ("UnAuthUnitScores")
+            'personID': personID
+        }
+        unitScores = collectUnauthenticatedUserDetails(unitScores) 
+        
+        unitScoresJsonData = json.dumps(unitScores).encode('utf-8')
+
+        #Pass all non student data to the server
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.connect((HOST, PORT))
+            s.sendall(unitScoresJsonData)
+
+            #Recieve assessment results from server
+            ResultResponse = s.recv(1024)
+            print(f"\n{ResultResponse.decode('utf-8')}")
+main()
+input("\nEnter to continue...\n\n")
+main()
