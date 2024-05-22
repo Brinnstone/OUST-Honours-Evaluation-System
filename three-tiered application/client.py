@@ -188,6 +188,8 @@ def main():
             # Recieve assessment results from server
             ResultResponse = s.recv(1024)
             print(f"\n{ResultResponse.decode('utf-8')}")
-main()
-input("\nEnter to continue...\n\n")
-main()
+            
+while True:            
+    main()
+    input('\nEnter to continue...\n\n')
+    main()
