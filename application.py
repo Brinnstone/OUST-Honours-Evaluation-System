@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-# This program was not designed to be ran in an IDE such as Visual Code. It is recommended to simply run the application.py file in the terminal
+# This program was not designed to be ran in an IDE such as Visual Code. It is recommended to double click this .py file and simply run the application.py file in the terminal
 
 def twoTieredApplication():
     # Change directory to the two-tiered application folder

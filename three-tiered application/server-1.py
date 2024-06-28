@@ -1,7 +1,13 @@
 import socket
 import json
+import threading
+import time
 
-#Communicate with Server-2
+#---------------------------------------------------------
+#Functions
+#---------------------------------------------------------
+
+# Establish a communication with Server-2
 def sendToServer2(request):
     HOST = "127.0.0.1"
     PORT = 25566
@@ -14,7 +20,7 @@ def sendToServer2(request):
 
     return response
 
-# Calculate averages
+# Calculate the course average for a student
 def calculateCourseAverage(marks, unitCode):
     totalMarks = 0
     for mark in marks:
@@ -27,15 +33,17 @@ def calculateCourseAverage(marks, unitCode):
     courseAverage = totalMarks / unitAmount
     return round(courseAverage, 2)
 
-# Average of best 8 scores 
+# Calculate the average of best 8 scores for a student
 def calculateBest8Average(unitScoreList):
+    # Sorts the unitScoreList to find the best 8 averages 
     best8Average = sorted(unitScoreList.items(), key=lambda x: x[1], reverse=True)[:8]
 
+    # adds the best 8 averages to a dictionary
     best8AverageDict = dict(best8Average)
     return best8AverageDict
 
-# evaluate eligibility
-# Recieve a list of unit code, score
+# This function evaluates a student's eligibility for the honours program
+# Recieves a list of unit codes, units failed and the students' id
 def honorEligibility(unitScoreList, unitFailed, personID):
     courseAverage = calculateCourseAverage(unitScoreList.values(), unitScoreList.keys())
     best8Average = calculateBest8Average(unitScoreList)
@@ -61,7 +69,7 @@ def honorEligibility(unitScoreList, unitFailed, personID):
     else:
         return f"{personID} : {courseAverage}, Does not qualify for honors study!"
 
-
+# This function finds all of a  students' records, otherwise it will create a new record for unauthorised users.
 def StudentRecord(userData):
     
     individualRecord = {}
@@ -88,7 +96,7 @@ def StudentRecord(userData):
     print(f"Student Record: {individualRecord}")
     return individualRecord
 
-
+# This function finds / calculates all of a students' failed courses
 def StudentFailureRecord(userData):
     individualRecord = {}
 
@@ -129,9 +137,7 @@ def StudentFailureRecord(userData):
     print(f"Student unit failures: {individualRecord}")
     return individualRecord
 
-    
-
-
+# This function attempts to authenticate a user against the information in the OSCLR database
 def authenticateClient(userData, comparisonData):
     # Check if userData is a dictionary and contains the 'error' key
     if isinstance(userData, dict):
@@ -168,12 +174,8 @@ def authenticateClient(userData, comparisonData):
     
     print("Authentication failed.")
     return "Authentication failed."
-    
 
-
-
-
-
+# This function handles the connection between the server and the client.
 def handleClientContinuously(conn):
     while True:  # Keep the connection open to handle multiple requests
         data = conn.recv(1024)
@@ -187,20 +189,21 @@ def handleClientContinuously(conn):
             userData = tempData
             print("Received data from client:", userData)
 
+            # This is an unused data type that was meant to close the conneciton between the client and the server, freeing up resources but was never implemented
             if userData.get("requestType") == "Exit":
                 print("Exit command received, closing connection.")
                 break
 
             elif userData.get("requestType") == "Auth":
                 userData.pop("requestType", None)
-                userData["requestType"] = "getStudentDetails" #Changing the request type to be handled within Server-2
+                userData["requestType"] = "getStudentDetails" # Changing the request type to be handled within Server-2
                 retrievedData = sendToServer2(userData)
                 print(retrievedData)
                 response = authenticateClient(retrievedData, userData)
 
             elif userData.get("requestType") == "Eval":
                 userData.pop("requestType", None)
-                userData["requestType"] = "getStudentUnitInfo" #Changing the request type to be handled within Server-2
+                userData["requestType"] = "getStudentUnitInfo" # Changing the request type to be handled within Server-2
                 retrievedData = sendToServer2(userData)
                 unitScoreList = StudentRecord(retrievedData)
                 unitFailed = StudentFailureRecord(retrievedData)
@@ -223,6 +226,27 @@ def handleClientContinuously(conn):
                 
         # Send the response back to the client
         conn.sendall(response.encode("utf-8"))
+
+#---------------------------------------------------------
+#Main Code Body
+#---------------------------------------------------------
+
+BROADCAST_IP = '255.255.255.255' # local broadcast ip address
+BROADCAST_PORT = 37020
+SERVER_PORT = 25565
+
+# This function is used to broadcast the server's IP address on the local network so the client can find the server when it is on a different device.
+def broadcast_ip():
+    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP) as s:
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        while True:
+            message = json.dumps({"host": socket.gethostbyname(socket.gethostname()), "port": SERVER_PORT})
+            s.sendto(message.encode('utf-8'), (BROADCAST_IP, BROADCAST_PORT))
+            time.sleep(2)  # Broadcast every 2 seconds
+
+# Broadcasts on separate thread to avoid blocking the main server's connection 
+threading.Thread(target=broadcast_ip, daemon=True).start()
+
 
 HOST = ""
 PORT = 25565
